@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.9.14" id="PropertyIdentificationList"
+          Package="MACPerformWorkTaskUI_PerformWorkTask"
+          BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList" isJavaBased="false">
+  <AccessorAttribute id="PropertyIdentification" IsCollection="true"
+                     BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType_PropertyIdentification_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="2147483640"/>
+      <Property Name="LABEL" Value="Property Identification"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="PropertyIdentification"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/ao/propertyIdentification"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

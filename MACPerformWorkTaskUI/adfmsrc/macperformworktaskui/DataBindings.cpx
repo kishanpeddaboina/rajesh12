@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.16.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="macperformworktaskui" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/PerformWorkTask_TaskDetails.jspx" usageId="macperformworktaskui_PerformWorkTask_TaskDetailsPageDef"/>
+    <page path="/PerformWorkTask_TaskNotification.jspx"
+          usageId="macperformworktaskui_PerformWorkTask_TaskNotificationPageDef"/>
+    <page path="/mac-unassignedpt-btf/PerformTask.jsff"
+          usageId="macperformworktaskui_unassignedPerformTaskPageDef"/>
+    <page path="/run.jspx" usageId="macperformworktaskui_runPageDef"/>
+    <page path="/mac-assignedpt-ownershipreviewer/mac-assignedpt-ownershipreviewer.jsff"
+          usageId="macperformworktaskui_mac_assignedpt_ownershipreviewerPageDef"/>
+    <page path="/WEB-INF/btf/mac-assignedpt-ownershipreviewer-btf.xml#mac-assignedpt-ownershipreviewer-btf@loadAssignedPT"
+          usageId="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_loadAssignedPTPageDef"/>
+    <page path="/WEB-INF/btf/mac-unassignedpt-btf.xml#mac-unassignedpt-btf@loadData"
+          usageId="macperformworktaskui_mac_unassignedpt_btf_mac_unassignedpt_btf_loadDataPageDef"/>
+    <page path="/WEB-INF/PerformWorkTask_TaskFlow.xml#PerformWorkTask_TaskFlow@loadParams"
+          usageId="macperformworktaskui_PerformWorkTask_TaskFlow_PerformWorkTask_TaskFlow_loadParamsPageDef"/>
+    <page path="/WEB-INF/btf/mac-assignedpt-ownershipreviewer-btf.xml#mac-assignedpt-ownershipreviewer-btf@validateAinVisited"
+          usageId="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_validateAinVisitedPageDef"/>
+    <page path="/agrregateAssUnitCre.jspx" usageId="macperformworktaskui_agrregateAssUnitCrePageDef"/>
+    <page path="/cre.jsff" usageId="macperformworktaskui_crePageDef"/>
+    <page path="/mac-assignedpt-ownershipreviewer/editAggregate.jspx"
+          usageId="macperformworktaskui_editAggregatePageDef"/>
+    <page path="/WEB-INF/btf/mac-assignedpt-ownershipreviewer-btf.xml#mac-assignedpt-ownershipreviewer-btf@submittask"
+          usageId="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_submittaskPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="macperformworktaskui_PerformWorkTask_TaskDetailsPageDef"
+          path="macperformworktaskui.pageDefs.PerformWorkTask_TaskDetailsPageDef"/>
+    <page id="macperformworktaskui_PerformWorkTask_TaskNotificationPageDef"
+          path="macperformworktaskui.pageDefs.PerformWorkTask_TaskNotificationPageDef"/>
+    <page id="macperformworktaskui_unassignedPerformTaskPageDef"
+          path="mac_unassignedpt_btf.unassignedPerformTaskPageDef"/>
+    <page id="macperformworktaskui_runPageDef" path="macperformworktaskui.pageDefs.runPageDef"/>
+    <page id="macperformworktaskui_mac_assignedpt_ownershipreviewerPageDef"
+          path="mac_assignedpt_ownershipreviewer.mac_assignedpt_ownershipreviewerPageDef"/>
+    <page id="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_loadAssignedPTPageDef"
+          path="btf.mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_loadAssignedPTPageDef"/>
+    <page id="macperformworktaskui_mac_unassignedpt_btf_mac_unassignedpt_btf_loadDataPageDef"
+          path="btf.mac_unassignedpt_btf_mac_unassignedpt_btf_loadDataPageDef"/>
+    <page id="macperformworktaskui_PerformWorkTask_TaskFlow_PerformWorkTask_TaskFlow_loadParamsPageDef"
+          path="macperformworktaskui.pageDefs.PerformWorkTask_TaskFlow_PerformWorkTask_TaskFlow_loadParamsPageDef"/>
+    <page id="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_validateAinVisitedPageDef"
+          path="btf.mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_validateAinVisitedPageDef"/>
+    <page id="macperformworktaskui_agrregateAssUnitCrePageDef"
+          path="macperformworktaskui.pageDefs.agrregateAssUnitCrePageDef"/>
+    <page id="macperformworktaskui_crePageDef" path="macperformworktaskui.pageDefs.crePageDef"/>
+    <page id="macperformworktaskui_editAggregatePageDef" path="mac_assignedpt_ownershipreviewer.editAggregatePageDef"/>
+    <page id="macperformworktaskui_mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_submittaskPageDef"
+          path="btf.mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_submittaskPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="MacDC" path="gov.laca.amp.modules.MacDC"/>
+    <dc id="MACPerformWorkTaskUI_PerformWorkTask" path="macperformworktaskui.MACPerformWorkTaskUI_PerformWorkTask"/>
+  </dataControlUsages>
+</Application>

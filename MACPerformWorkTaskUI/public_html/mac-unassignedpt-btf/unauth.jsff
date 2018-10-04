@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelGroupLayout id="pgl1" layout="vertical" halign="center" inlineStyle="padding-top: 100px;">
+    <af:outputText value="You are not authorized to act on this task." id="ot1"
+                   inlineStyle="font-size:large; font-weight:bold;"/>
+  </af:panelGroupLayout>
+</jsp:root>

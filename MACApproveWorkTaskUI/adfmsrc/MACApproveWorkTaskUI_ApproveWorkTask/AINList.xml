@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.16.48" id="AINList"
+          Package="MACApproveWorkTaskUI_ApproveWorkTask" BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.AINList"
+          isJavaBased="false">
+  <AccessorAttribute id="AIN" IsCollection="true" BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.AIN"
+                     CollectionBeanClass="MACApproveWorkTaskUI_ApproveWorkTask.AIN_AIN_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="2147483640"/>
+      <Property Name="LABEL" Value="AIN"/>
+      <Property Name="LeafElement_hint" Value="LeafElement_with_attribute"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="AIN"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

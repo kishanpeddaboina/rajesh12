@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.16.48" id="getTaskDetails"
+          Package="MACApproveWorkTaskUI_ApproveWorkTask" BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.getTaskDetails"
+          isJavaBased="false">
+  <AccessorAttribute id="task" IsCollection="true" BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.task"
+                     CollectionBeanClass="MACApproveWorkTaskUI_ApproveWorkTask.getTaskDetails_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Task"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="task"/>
+      <Property Name="targetNamespace" Value="http://xmlns.oracle.com/bpel/workflow/task"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

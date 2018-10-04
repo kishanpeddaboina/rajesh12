@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="mac-unassignedpt-btf">
+    <default-activity>loadData</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>ain</name>
+      <value>#{pageFlowScope.ain}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>aoid</name>
+      <value>#{pageFlowScope.aoid}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name>MacWorkTaskBean</managed-bean-name>
+      <managed-bean-class>gov.laca.amp.modules.mac.backing.MacWorkTaskBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__1">
+      <managed-bean-name>MacPerformBean</managed-bean-name>
+      <managed-bean-class>gov.laca.amp.modules.mac.backing.MacPerformBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="unassignedPerformTask">
+      <page>/mac-unassignedpt-btf/PerformTask.jsff</page>
+    </view>
+    <method-call id="loadData">
+      <method>#{pageFlowScope.MacPerformBean.loadAssignedPT}</method>
+      <outcome>
+        <fixed-outcome>assignedPT</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>loadData</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>assignedPT</from-outcome>
+        <to-activity-id>unassignedPerformTask</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

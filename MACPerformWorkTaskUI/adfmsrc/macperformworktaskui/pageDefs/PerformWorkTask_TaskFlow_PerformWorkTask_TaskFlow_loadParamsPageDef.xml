@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="PerformWorkTask_TaskFlow_PerformWorkTask_TaskFlow_loadParamsPageDef"
+                Package="macperformworktaskui.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="MACPerformWorkTaskUI_PerformWorkTask" RangeSize="25"
+                    BeanClass="MACPerformWorkTaskUI_PerformWorkTask.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.task" id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PerformWorkTaskPayloadType" id="payloadIterator"/>
+    <accessorIterator id="AMPWorkTaskIterator" MasterBinding="payloadIterator" Binds="AMPWorkTask" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="AINList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AINList" id="AINListIterator"/>
+    <accessorIterator id="AINIterator" MasterBinding="AINListIterator" Binds="AIN" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AIN"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="PropertyIdentificationList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList"
+                      id="PropertyIdentificationListIterator"/>
+    <accessorIterator id="PropertyIdentificationIterator" MasterBinding="PropertyIdentificationListIterator"
+                      Binds="PropertyIdentification" RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="customAttributes" RangeSize="10"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.customAttributesType"
+                      id="customAttributesIterator"/>
+    <accessorIterator id="WorkTaskDetailsIterator" MasterBinding="AMPWorkTaskIterator" Binds="WorkTaskDetails"
+                      RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.WorkTaskDetails"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                  InstanceName="bindings.getTaskDetails.dataControl"
+                  ReturnName="data.MACPerformWorkTaskUI_PerformWorkTask.methodResults.getTaskDetails_getTaskDetails_dataControl_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="customAttributesIterator" id="customAttributeString2">
+      <AttrNames>
+        <Item Value="customAttributeString2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WorkTaskDetailsIterator" id="Milestone">
+      <AttrNames>
+        <Item Value="Milestone"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

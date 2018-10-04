@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.16.48" id="WorkTaskDetails"
+          Package="MACPerformWorkTaskUI_PerformWorkTask"
+          BeanClass="MACPerformWorkTaskUI_PerformWorkTask.WorkTaskDetails" isJavaBased="false">
+  <Attribute Name="WorkTaskIsReviewTitle" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WorkTaskTitle"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Work Task Is Review Title"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="WorkTaskIsReviewTitle"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="WorkTaskTitle" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WorkTaskName"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Work Task Title"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="WorkTaskTitle"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="WorkTaskName" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Milestone"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Work Task Name"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="WorkTaskName"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Milestone" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Milestone"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Milestone"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

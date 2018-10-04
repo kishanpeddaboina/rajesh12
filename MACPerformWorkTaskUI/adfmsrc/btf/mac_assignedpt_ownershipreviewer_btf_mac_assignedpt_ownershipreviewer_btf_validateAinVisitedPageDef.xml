@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48"
+                id="mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_validateAinVisitedPageDef"
+                Package="btf" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="validateAinVisited" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="validateAinVisited" IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.validateAinVisited.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.validateAinVisited_validateAinVisited_dataControl_dataProvider_validateAinVisited_result"/>
+    <methodAction id="validateInvestReq" RequiresUpdateModel="true" Action="invokeMethod" MethodName="validateInvestReq"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.validateInvestReq.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.validateInvestReq_validateInvestReq_dataControl_dataProvider_validateInvestReq_result"/>
+    <methodAction id="validateSitusReq" RequiresUpdateModel="true" Action="invokeMethod" MethodName="validateSitusReq"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.validateSitusReq.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.validateSitusReq_validateSitusReq_dataControl_dataProvider_validateSitusReq_result"/>
+  </bindings>
+</pageDefinition>

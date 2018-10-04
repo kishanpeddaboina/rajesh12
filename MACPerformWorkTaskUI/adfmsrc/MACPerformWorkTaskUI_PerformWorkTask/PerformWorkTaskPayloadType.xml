@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.16.48" id="PerformWorkTaskPayloadType"
+          Package="MACPerformWorkTaskUI_PerformWorkTask"
+          BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PerformWorkTaskPayloadType" isJavaBased="false">
+  <AccessorAttribute id="AMPWorkTask" IsCollection="true" BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask_AMPWorkTask_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="AMP Work Task"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="AMPWorkTask"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

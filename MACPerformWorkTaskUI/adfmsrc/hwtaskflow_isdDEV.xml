@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName>ampwt12d01.isd.lacounty.gov</hostName>
+      <httpPort>7778</httpPort>
+      <httpsPort/>
+   </TaskFlowServer>
+<hwTaskFlow><WorkflowName>PerformWorkTask</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/Ownership/MailingAddressChange/PerformWorkTask</TaskDefinitionNamespace><TaskFlowId>PerformWorkTask_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/PerformWorkTask_TaskFlow.xml</TaskFlowFileName></hwTaskFlow><hwTaskFlow><WorkflowName>ManageWorkTask</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/Ownership/MailingAddressChange/ManageWorkTask</TaskDefinitionNamespace><TaskFlowId>PerformWorkTask_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/PerformWorkTask_TaskFlow.xml</TaskFlowFileName></hwTaskFlow></hwTaskFlows>

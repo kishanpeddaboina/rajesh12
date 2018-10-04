@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<af:outputText value="this is create agg wrk unit  page"/>
+<af:outputText value="AggregatedId: #{bindings.AggregatedId.inputValue}"/>
+<af:outputText value="AIN: #{bindings.AIN.inputValue}"/>
+  <af:region value="#{bindings.ampaggregateassessmentunitbtf1.regionModel}" id="r1"/>
+</jsp:root>

@@ -1,0 +1,452 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+          xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:AmpAddrValidn="/AddressValidnDeclCompTagLib"
+          xmlns:h="http://java.sun.com/jsf/html">
+    <c:set var="macperformworktaskuiBundle" value="#{adfBundle['macperformworktaskui.MACPerformWorkTaskUIBundle']}"/>
+    <af:panelHeader text="Mailing Address Change Request Information" id="ph1" inlineStyle="min-width: 1370px;">
+        <af:panelGroupLayout id="pgl2" styleClass="AFStretchWidth padding-top-10 padding-bottom-10" layout="vertical">
+            <af:panelGroupLayout id="pgl33" styleClass="AFStretchWidth padding-top-10 padding-bottom-10"
+                                 layout="horizontal" halign="right" partialTriggers="l1 l2"
+                                 binding="#{macUiBean.refPgl}">
+                <af:link text="#{macperformworktaskuiBundle.ShowAllAIN}" id="l1"
+                         actionListener="#{pageFlowScope.MacPerformBean.showAllAin}"
+                         rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue >1 and pageFlowScope.filterLinkType != 'filter' }">
+                          <af:setPropertyListener type="action" to="#{pageFlowScope.filterLinkType}" from="filter"/>
+                </af:link>
+                <af:link text="#{macperformworktaskuiBundle.SHOW_AIN_OWNED_BY_INVESTIGATOR}" id="l2"
+                         actionListener="#{pageFlowScope.MacPerformBean.filterAin}"
+                         rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue >1 and pageFlowScope.filterLinkType == 'filter'}">
+                    <af:setPropertyListener type="action" to="#{pageFlowScope.filterLinkType}" from=""/>
+                </af:link>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:link id="l3"  text="Edit Work Unit Aggregate"  visible="#{pageFlowScope.MacPerformBean.ownershipReviewer2 || pageFlowScope.MacPerformBean.ownershipReviewer}" 
+                            inlineStyle="background-color:white;font-size:small;#{node.selected ? 'font-weight:bold;' : ''};padding-left: 10px;"
+                            clientComponent="true" action="#{pageFlowScope.MacPerformBean.showEditAggregate}" useWindow="true" windowHeight="680"
+                  windowWidth="1250" returnListener="#{pageFlowScope.MacPerformBean.onEditAggrReturn}">
+            <af:setActionListener from="#{bindings.AggregatedId.inputValue}" to="#{pageFlowScope.aggregateId}"/>
+            <af:setActionListener from="#{bindings.ain.inputValue}" to="#{pageFlowScope.ain}"/>
+            <!--<af:setPropertyListener from="EDIT_CLICK" to ="#{pageFlowScope.buttonClick}" type="action"/>
+                <af:clientAttribute name="AggregatedId" value="#{bindings.AggregatedId.inputValue}"/>                      
+                <af:clientAttribute name="Ain" value="#{bindings.ain.inputValue}"/>                      
+                <af:showPopupBehavior popupId="editWrkUnitPopup" triggerType="click"/>-->
+            </af:link>
+        <af:panelGroupLayout id="pgl34" layout="vertical" styleClass="AFStretchWidth"
+                             partialTriggers="b2 b3 l1 b6 b7 b8"
+                             binding="#{macUiBean.performNavPgl}">
+            <af:panelGridLayout id="pgl3">
+                <af:gridRow marginTop="5px" height="auto" id="gr14">
+                    <af:gridCell marginStart="5px" width="20%" id="gc18"/>
+                    <af:gridCell marginStart="5px" width="60%" id="gc19" halign="center">
+                        <af:image source="/img/isVisted.png" shortDesc="AIN has been visited/reviewed" id="i1"
+                                  rendered="#{bindings.isVisited.inputValue eq true}"/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc20"/>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="auto" id="gr15">
+                    <af:gridCell marginStart="5px" width="20%" id="gc21">
+                        <af:link 
+                                 text="#{macperformworktaskuiBundle.Previous}" disabled="#{!bindings.Previous.enabled}"
+                                 partialSubmit="true" id="b2"
+                                 rendered="#{bindings.ainListIterator.estimatedRowCount >1}"
+                                 action="#{pageFlowScope.MacPerformBean.onPrevious}"/>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="60%" id="gc22" halign="center">
+                        <af:panelGroupLayout id="pgl22" halign="start" layout="horizontal"
+                                          styleClass="padding-top-10 padding-bottom-10">
+                            <af:outputText value="#{macperformworktaskuiBundle.AIN}" id="ot04"
+                                           inlineStyle="font-weight: bold"/>
+                            <af:outputText value="#{pageFlowScope.MacPerformBean.navigationPage}"
+                                           inlineStyle="font-weight: bold" id="ot4"/>
+                            <af:outputText value=" of #{bindings.ainListIterator.estimatedRowCount}"
+                                           inlineStyle="font-weight: bold" id="ot5"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="20%" marginEnd="5px" id="gc23" halign="end">
+                        <af:link  text="#{macperformworktaskuiBundle.Next}"
+                                 rendered="#{bindings.ainSize.inputValue >1}" partialSubmit="true"
+                                 id="b3" action="#{pageFlowScope.MacPerformBean.onNext}"
+                                />
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr16">
+                    <af:gridCell marginStart="5px" width="34%" id="gc24"/>
+                    <af:gridCell marginStart="5px" width="33%" id="gc25"/>
+                    <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc26"/>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <!--<af:panelGroupLayout id="pgl35" styleClass="AFStretchWidth padding-top-10 padding-bottom-10" halign="center"
+                                 inlineStyle="padding-bottom:20px;width:1400px" layout="horizontal">
+                <af:panelGroupLayout id="pgl1" halign="center" layout="vertical"/>
+            </af:panelGroupLayout>
+                        <af:panelGroupLayout id="pgl20" layout="horizontal"
+                                 styleClass="AFStretchWidth  padding-top-10 padding-bottom-10"
+                                 inlineStyle="background-color:rgb(238,238,238);border-style:groove;">
+                <af:panelGroupLayout id="pgl21" halign="left" layout="vertical"/>
+                <af:panelGroupLayout id="pgl23" halign="end" layout="vertical"/>
+            </af:panelGroupLayout>-->
+            <af:panelBox text="" id="pb1" showDisclosure="false" showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelGridLayout id="pgl11" partialTriggers="b4 b5">
+                    <af:gridRow marginTop="10px" height="auto" id="gr1" marginBottom="10px">
+                        <af:gridCell marginStart="5px" columnSpan="2" width="100%" id="gc1" >
+                            <af:panelGroupLayout id="pgl1" layout="horizontal">
+                                <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.AIN_}" id="plam7">
+                                    <af:outputText value="#{bindings.ainDisplay.inputValue}" id="ot116"/>
+                                </af:panelLabelAndMessage>
+                                <af:spacer width="75" height="10" id="s2"/>
+                                <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.PARCEL_STATUS_}"
+                                                         id="plam8">
+                                    <af:outputText value="#{bindings.parcelStatus.inputValue}" id="ot117"/>
+                                </af:panelLabelAndMessage>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                       
+                    </af:gridRow>
+                    <af:gridRow marginTop="15px" height="auto" id="gr2">
+                        <af:gridCell marginStart="5px" columnSpan="2" width="100%" marginEnd="5px" id="gc3">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.CurrentSitusAddress}"
+                                                     id="plam6">
+                                <af:outputText value="#{bindings.street.inputValue == null ? '' : bindings.street.inputValue}, #{bindings.city.inputValue == null ? '' : bindings.city.inputValue}, #{bindings.state.inputValue == null ? '' : bindings.state.inputValue}, #{bindings.zip.inputValue ? '' : bindings.zip.inputValue }, #{bindings.country.inputValue == null ? '' : bindings.country.inputValue}"
+                                               id="ot115"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" id="gr3" marginBottom="10px">
+                        <af:gridCell marginStart="5px" columnSpan="2" width="100%" marginEnd="5px" id="gc4">
+                            <af:link text="#{macperformworktaskuiBundle.SelectPriorAssessee}" id="b1" disabled="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true}"
+                           
+                                     clientComponent="true" partialSubmit="true">
+                              
+                                <af:showPopupBehavior popupId="selectPriorAssessee" triggerType="action"
+                                                      />
+                            </af:link>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="15px" height="auto" id="gr4" marginBottom="10px"
+                                binding="#{macUiBean.assesseeForm1}">
+                        <af:gridCell marginStart="5px" width="50%" id="gc5" columnSpan="1">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.ASSESSEE_NAME_}" id="plam2">
+                                <af:outputText value="#{bindings.assesseeName.inputValue}" inlineStyle="width: 400px;word-wrap:break-word;display: block;" id="ot1"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="50%" id="gc6" columnSpan="1">
+                            <af:panelGroupLayout id="pgl4" layout="horizontal">
+                                <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.RecordingDate}" id="plam3">
+                                    <af:outputFormatted value="#{bindings.recordingDate.inputValue}" id="of6">
+                                        <af:convertDateTime pattern="#{bindings.recordingDate.format}"/>
+                                    </af:outputFormatted>
+                                </af:panelLabelAndMessage>
+                                <af:spacer width="30" height="10" id="s3"/>
+                                <af:panelLabelAndMessage label="#{macperformworktaskuiBundle['Seq.']}" id="plam4">
+                                    <af:outputText value="#{bindings.seqNumber.inputValue}" id="ot3"/>
+                                </af:panelLabelAndMessage>
+                                <af:spacer width="30" height="10" id="s4"/>
+                                <af:panelLabelAndMessage label="#{macperformworktaskuiBundle['Doc.']}" id="plam5">
+                                    <af:outputText value="#{bindings.docId.inputValue}" id="ot114"/>
+                                </af:panelLabelAndMessage>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="15px" height="auto" marginBottom="10px" id="gr24"
+                                binding="#{macUiBean.assesseeForm3}">
+                        <af:gridCell marginStart="5px"  marginEnd="5px" id="gc29" columnSpan="2" width="100%">
+                 
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.Incareof}"
+                                                     id="plam21">
+                                <af:outputText value="#{bindings.inCareOf1.inputValue}"
+                                               shortDesc="#{bindings.inCareOf1.hints.tooltip}" id="ot18"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" marginBottom="5px" id="gr5"
+                                binding="#{macUiBean.assesseeForm2}">
+                        <af:gridCell marginStart="5px"  marginEnd="5px" id="gc10" columnSpan="2" width="100%">
+                            <!--<af:panelLabelAndMessage label="#{macperformworktaskuiBundle.CurrentMailingAddress}"
+                                                     id="plam1" rendered="#{bindings.ainListIterator.estimatedRowCount eq 1}">
+                                <af:outputText value="#{bindings.currentMailingAddress.inputValue}"
+                                            rendered="#{bindings.mailingAddress.inputValue eq ',,,,'} " shortDesc="#{bindings.currentMailingAddress.hints.tooltip}" id="ot16"/>
+                                --><!--<af:outputText value="#{bindings.street1.inputValue}, #{bindings.city1.inputValue}, #{bindings.state1.inputValue}, #{bindings.zip1.inputValue}, #{bindings.country1.inputValue}"
+                                              rendered="#{bindings.mailingAddress.inputValue eq ',,,,'}" id="ol1"/>--><!--
+                                <af:outputText value="#{bindings.mailingAddress.inputValue}" 
+                                
+                                rendered="#{bindings.mailingAddress.inputValue != ',,,,' }"
+                                               shortDesc="#{bindings.mailingAddress.hints.tooltip}" id="ot2"/>
+                            </af:panelLabelAndMessage>
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.CurrentMailingAddress}"  id="plam10" 
+                            rendered="#{bindings.ainListIterator.estimatedRowCount !=1}"
+                            >
+                                <af:outputText value="#{bindings.currentMailingAddress.inputValue}"
+                                               shortDesc="#{bindings.currentMailingAddress.hints.tooltip}" id="ot17"/>
+                            </af:panelLabelAndMessage>-->
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.CurrentMailingAddress}"
+                                                     id="plam1">
+                                <af:outputText value="#{bindings.currentMailingAddress.inputValue}"
+                                               shortDesc="#{bindings.currentMailingAddress.hints.tooltip}" id="ot17"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:panelBox>
+            <af:panelBox id="pb2" showDisclosure="false" styleClass="AMPBPMApprovePanelBox"
+                         text="#{macperformworktaskuiBundle.NewMailingAddress}">
+                <af:panelGridLayout id="pgl5">
+                    <af:gridRow marginTop="10px" height="auto" id="gr6">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc9">
+                            <af:button text="#{macperformworktaskuiBundle.UseSitusAdress}" id="b101"
+                                       action="#{pageFlowScope.MacPerformBean.onUseSitusAddr}"
+                                       rendered="#{bindings.ainSize.inputValue eq 1}"
+                                       partialSubmit="true" partialTriggers="pgl16"/>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" id="gr7">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc11"></af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="5px" height="auto" id="gr8">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc12"/>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" id="gr9">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc13">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.InCareOf}" id="plam9">
+                                <af:inputText value="#{bindings.inCareOf.inputValue}" simple="true"
+                                              required="#{bindings.inCareOf.hints.mandatory}" disabled="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true}"
+                                              columns="77" contentStyle="text-transform:uppercase;"
+                                              maximumLength="#{bindings.inCareOf.hints.precision}"
+                                              shortDesc="#{bindings.inCareOf.hints.tooltip}" id="it2" >
+                                    <f:validator binding="#{bindings.inCareOf.validator}"/>
+                                </af:inputText>
+                                <!--<af:inputText value="#{bindings.inCareOf.inputValue}"
+                                              required="#{bindings.inCareOf.hints.mandatory}"
+                                              maximumLength="#{bindings.inCareOf.hints.precision}"
+                                              shortDesc="#{bindings.inCareOf.hints.tooltip}" id="it1"
+                                              contentStyle="width:600px" simple="true">
+                                    <f:validator binding="#{bindings.inCareOf.validator}"/>
+                                </af:inputText>-->
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" id="gr10">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc14" halign="start">
+                            <af:panelGroupLayout id="pgl16"  binding="#{macUiBean.addressValidnForm}" layout="vertical" styleClass="AFStretchWidth AMPBPMPanelBox">
+                                <AmpAddrValidn:AddressValidation addrValidation="#{backingBeanScope.macAddrValidationBean.validateAddressForm}"
+                                                                     showButton="#{(pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true) ? 'NO' : 'YES'}"
+                                                                     buttonLabel="#{backingBeanScope.macAddrValidationBean.buttonLabel}"
+                                                                     styleClass="#{backingBeanScope.macAddrValidationBean.styleClass}"
+                                                                     id="av1"
+                                                                     addressList="#{backingBeanScope.macAddrValidationBean.addressList}"
+                                                                     matchLevelDesc="#{backingBeanScope.macAddrValidationBean.matchLevelDesc}"
+                                                                     City="#{bindings.city1.inputValue}"
+                                                                     Country="#{bindings.country1.inputValue}"
+                                                                     PostalCode="#{bindings.zip1.inputValue}"
+                                                                     State="#{bindings.state1.inputValue}" 
+                                                                     StreetAddress="#{bindings.street1.inputValue}"
+                                                                 isDisabled="#{(pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true) ? 'true' : 'false'}"/>
+                               </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" marginBottom="5px" id="gr11">
+                        <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc15" columnSpan="1">
+                            <af:panelGroupLayout id="pgl29" styleClass="AFStretchWidth padding-top-10 padding-bottom-10"
+                                                 layout="horizontal"
+                                                 binding="#{macUiBean.checkboxInvestigation}">
+                                <af:selectBooleanCheckbox value="#{bindings.isSitusAddrInvestigationReq1.inputValue}"
+                                                          autoSubmit="true" disabled="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true}"
+                                                          text="#{macperformworktaskuiBundle.SitusAddressInvestigation}"
+                                                          shortDesc="#{bindings.isSitusAddrInvestigationReq1.hints.tooltip}"
+                                                          id="sbc1"
+                                                          valueChangeListener="#{pageFlowScope.MacPerformBean.situsAddreInvestVCL}"
+                                                          binding="#{macUiBean.itusAddrInvestigation}"/>
+                                <af:selectBooleanCheckbox text="Save Address Change to Mailing &amp; Situs Address"
+                                                          id="sbc2" 
+                                                          rendered="false"
+                                                          binding="#{macUiBean.mailingSitusAddr}"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" marginBottom="5px" id="gr12">
+                        <af:gridCell width="100%" id="gc17" columnSpan="1">
+                            <af:panelGroupLayout id="pgl31" styleClass="AFStretchWidth padding-top-10 padding-bottom-10"
+                                                 layout="vertical"
+                                                 binding="#{macUiBean.notesLayout}">
+                                <af:outputLabel value="Note for Situs Address Investigation" id="ol2"/>
+                                <af:inputText value="#{bindings.situsAddrInvestigationNotes.inputValue}" rows="4"
+                                              autoSubmit="true" requiredMessageDetail="Notes Mandatory" disabled="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true}"
+                                              maximumLength="#{bindings.situsAddrInvestigationNotes.hints.precision}"
+                                              shortDesc="#{bindings.situsAddrInvestigationNotes.hints.tooltip}" id="it4"
+                                              binding="#{macUiBean.ainNotes}"
+                                              contentStyle="width:500px;" styleClass="AMPBPMApproveLabel">
+                                    <f:validator binding="#{bindings.situsAddrInvestigationNotes.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="10px" height="auto" marginBottom="5px" id="gr13">
+                        <af:gridCell width="100%" id="gc16" columnSpan="1">
+                            <af:panelGroupLayout id="pgl14" layout="vertical" inlineStyle="margin-top: 5px;"
+                                                 binding="#{macUiBean.remarksLayout}">
+                                <af:outputLabel value="Remarks" id="ol3"/>
+                                <af:inputText value="#{bindings.remarks.inputValue}" label="Remarks" simple="true"
+                                              rows="4" requiredMessageDetail="Remarks Mandatory" disabled="#{pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue != true}"
+                                              maximumLength="#{bindings.remarks.hints.precision}"
+                                              shortDesc="#{bindings.remarks.hints.tooltip}" id="it6"
+                                              binding="#{macUiBean.ainRemarks}"
+                                              contentStyle="width:500px; margin-bottom: 5px;"
+                                              styleClass="AMPBPMApproveLabel">
+                                    <f:validator binding="#{bindings.remarks.validator}"/>
+                                </af:inputText>
+                                <af:panelGroupLayout id="pgl13">
+                                    <af:button text="Approve Request" id="b6" rendered="#{(!pageFlowScope.MacPerformBean.ownershipReviewer2) || (pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue == 1) || (pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue)}"
+                                               action="#{pageFlowScope.MacPerformBean.ApproveAction}"/>
+                                    <af:button text=" Deny Request" id="b7" rendered="#{(!pageFlowScope.MacPerformBean.ownershipReviewer2) || (pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue == 1) || (pageFlowScope.MacPerformBean.ownershipReviewer2 and bindings.ainSize.inputValue > 1 and bindings.isOwnedByInvestigators.inputValue)}"
+                                               action="#{pageFlowScope.MacPerformBean.denyAction}"/>
+                                    <af:button text=" Mailing Address Investigation" id="b8"
+                                               action="#{pageFlowScope.MacPerformBean.mailingAddressInvestigation}"
+                                               rendered="#{!pageFlowScope.MacPerformBean.ownershipReviewer2}"/>
+                                    <f:facet name="separator">
+                                        <af:spacer width="5" height="5" id="s1"/>
+                                    </f:facet>
+                                </af:panelGroupLayout>
+                                
+                                
+                                <af:panelGroupLayout layout="horizontal" id="pgl130" 
+                                                     inlineStyle="padding-top: 20px; padding-bottom: 20px;" 
+                                                     rendered="#{bindings.isApproveAddrChange.inputValue eq true || bindings.isDenyAddrChange.inputValue eq true || bindings.isMailingAddrInvestigationReq.inputValue eq true}">
+                                    <af:outputText value="Current Decision :" id="ot51"
+                                                   styleClass="padding-top-10 padding-bottom-10"
+                                                   inlineStyle="font-weight: bold"
+                                                   rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2}"/>
+                                    <af:outputText value="Approved" id="ot61"
+                                                   rendered="#{bindings.isApproveAddrChange.inputValue eq true}"/>
+                                    <af:outputText value="Deny" id="ot71"
+                                                   rendered="#{bindings.isDenyAddrChange.inputValue eq true}"/>
+                                    <af:outputText value="Mailing Address Investigation Required" id="ot81"
+                                                   rendered="#{bindings.isMailingAddrInvestigationReq.inputValue eq true}"/>
+                                </af:panelGroupLayout>
+                                
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+               <!-- <af:outputText value="WUID:#{bindings.WorkUnitId.inputValue}" id="ot2"/>
+                <af:outputText value="AIN:#{bindings.ain.inputValue}" id="ot16"/>
+                <af:outputText value="NAVIGATIONPAGE:#{pageFlowScope.MacPerformBean.navigationPage}" id="ot18"/>-->
+            </af:panelBox>
+        </af:panelGroupLayout>
+        <af:region value="#{bindings.ampsupportingdocsbtf1.regionModel}" id="r1"/>
+        <af:popup id="selectPriorAssessee" autoCancel="disabled" contentDelivery="lazyUncached"
+                  childCreation="immediate" popupFetchListener="#{pageFlowScope.MacPerformBean.fetchPriorAssessee}"
+                  binding="#{macUiBean.selectAssesseePopUP}">
+            <af:setPropertyListener from="#{bindings.ain.inputValue}" to="#{pageFlowScope.ain}" type="popupFetch"/>
+            <af:setPropertyListener from="#{bindings.aoid.inputValue}" to="#{pageFlowScope.aoid}" type="popupFetch"/>
+            <af:dialog id="d2" resize="on" stretchChildren="first" title="Prior Assessee" closeIconVisible="true"
+                       type="none" modal="true" styleClass="AMPReadOnlyDialog" contentWidth="1150" contentHeight="300">
+                <af:panelGroupLayout id="pgl27" layout="scroll">
+                    <af:table value="#{bindings.assessePojoList.collectionModel}" var="row"
+                              rows="#{bindings.assessePojoList.rangeSize}"
+                              emptyText="#{bindings.assessePojoList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="1"
+                              selectedRowKeys="#{bindings.assessePojoList.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.assessePojoList.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.assessePojoList.rangeSize}"
+                              columnStretching="multiple" filterModel="#{bindings.assessePojoListQuery.queryDescriptor}"
+                              filterVisible="true" queryListener="#{bindings.assessePojoListQuery.processQuery}"
+                              varStatus="vs" id="t1" binding="#{macUiBean.assesseetable}">
+                        <af:column id="c10" headerText="Select" width="5%">
+                            <af:selectBooleanRadio id="sbr1" group="selectAssessee">
+                                <af:clientListener method="selectAssessee" type="click"/>
+                            </af:selectBooleanRadio>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.assesseeName.name}" filterable="true"
+                                   sortable="true" width="15%" headerText="#{macperformworktaskuiBundle.AssesseeName}"
+                                   id="c1">
+                            <af:outputText value="#{row.assesseeName}"
+                                           shortDesc="#{bindings.assessePojoList.hints.assesseeName.tooltip}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.recordingDate.name}" filterable="true"
+                                   sortable="true" width="12%" headerText="#{macperformworktaskuiBundle.RECORDING_DATE}"
+                                   id="c2">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.assessePojoListQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.recordingDate.value}"
+                                              id="id1">
+                                    <af:convertDateTime pattern="#{bindings.assessePojoList.hints.recordingDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:outputText value="#{row.recordingDate}"
+                                           shortDesc="#{bindings.assessePojoList.hints.recordingDate.tooltip}" id="ot7">
+                                <af:convertDateTime pattern="#{bindings.assessePojoList.hints.recordingDate.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.docId.name}" filterable="true"
+                                   sortable="true" width="7%" headerText="#{macperformworktaskuiBundle.Doc}" id="c3">
+                            <af:outputText value="#{row.docId}"
+                                           shortDesc="#{bindings.assessePojoList.hints.docId.tooltip}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.seqNumber.name}" filterable="true"
+                                   sortable="true" width="7%" headerText="#{macperformworktaskuiBundle.Seq}" id="c4">
+                            <af:outputText value="#{row.seqNumber}"
+                                           shortDesc="#{bindings.assessePojoList.hints.seqNumber.tooltip}" id="ot9"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.street.name}" filterable="true"
+                                   width="20%" sortable="true" headerText="#{macperformworktaskuiBundle.STREET}"
+                                   id="c5">
+                            <af:outputText value="#{row.street}"
+                                           shortDesc="#{bindings.assessePojoList.hints.street.tooltip}" id="ot15"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.city.name}" filterable="true"
+                                   sortable="true" width="10%" headerText="#{macperformworktaskuiBundle.City}" id="c6">
+                            <af:outputText value="#{row.city}"
+                                           shortDesc="#{bindings.assessePojoList.hints.city.tooltip}" id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.state.name}" filterable="true"
+                                   sortable="true" width="7%" headerText="#{macperformworktaskuiBundle.State}" id="c7">
+                            <af:outputText value="#{row.state}"
+                                           shortDesc="#{bindings.assessePojoList.hints.state.tooltip}" id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.zipcode.name}" filterable="true"
+                                   sortable="true" width="10%" headerText="#{macperformworktaskuiBundle.ZipCode}"
+                                   id="c8">
+                            <af:outputText value="#{row.zipcode}"
+                                           shortDesc="#{bindings.assessePojoList.hints.zipcode.tooltip}" id="ot13"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.country.name}" filterable="true"
+                                   sortable="true" width="10%" headerText="#{macperformworktaskuiBundle.Country}"
+                                   id="c9">
+                            <af:outputText value="#{row.country}"
+                                           shortDesc="#{bindings.assessePojoList.hints.country.tooltip}" id="ot14"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.assessePojoList.hints.updatedDate.name}" filterable="true"
+                                   sortable="true" headerText="#{macperformworktaskuiBundle.UPDATED_DATE}" id="c11">
+                            <af:outputText value="#{row.updatedDate}"
+                                           shortDesc="#{bindings.assessePojoList.hints.updatedDate.tooltip}" id="ot10">
+                                <af:convertDateTime pattern="#{bindings.assessePojoList.hints.updatedDate.format}"/>
+                            </af:outputText>
+                        </af:column>
+                    </af:table>
+                </af:panelGroupLayout>
+                <f:facet name="buttonBar">
+                    <af:panelGroupLayout id="pgl12" layout="horizontal" halign="right"
+                                         inlineStyle="float:right;padding-top:10px;">
+                        <af:button text="Cancel" id="b5" action="#{pageFlowScope.MacPerformBean.cancelPopUp}"/>
+                        <af:spacer width="10" id="s21"/>
+                        <af:button text="Select" id="b4" actionListener="#{pageFlowScope.MacPerformBean.selectAction}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:dialog>
+        </af:popup>
+    </af:panelHeader>
+	<!--<af:popup id="editWrkUnitPopup" autoCancel="disabled" contentDelivery="lazyUncached"
+              binding="#{macUiBean.editAggregatePopUp}">
+        --><!--<af:setPropertyListener from="#{source.attributes.AggregatedId}" to="#{pageFlowScope.aggregateId}" type="popupFetch"/>
+         <af:setPropertyListener from="#{source.attributes.Ain}" to="#{pageFlowScope.ain}" type="popupFetch"/>--><!--       
+        <af:dialog id="d1" resize="on" stretchChildren="first"  closeIconVisible="false"
+                   modal="true" type="none" styleClass="AMPReadOnlyDialog" contentWidth="1200" contentHeight="600">
+                    <af:panelGroupLayout id="pgl1" layout="scroll" styleClass="AFStrectchWidth"> 
+              
+              <af:region value="#{bindings.ampworkunitaggregatebtf1.regionModel}" id="r1"/>
+                                   
+                </af:panelGroupLayout>
+          
+        </af:dialog>
+    </af:popup>-->
+</jsp:root>

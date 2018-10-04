@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="mac-assignedpt-ownershipreviewer-btf">
+    <default-activity>loadAssignedPT</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__9">
+      <name>rolevalue</name>
+      <value>#{pageFlowScope.rolevalue}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__18">
+      <name>ain_text</name>
+      <value>#{pageFlowScope.ain_text}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__19">
+      <name>workUnitId</name>
+      <value>#{pageFlowScope.workUnitId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__28">
+      <name>milestone</name>
+      <value>#{pageFlowScope.milestone}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>MacPerformBean</managed-bean-name>
+      <managed-bean-class>gov.laca.amp.modules.mac.backing.MacPerformBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>macAddrValidationBean</managed-bean-name>
+      <managed-bean-class>gov.laca.amp.modules.mac.backing.AddrValidationBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__15">
+      <managed-bean-name>invokeActionBean</managed-bean-name>
+      <managed-bean-class>oracle.bpel.services.workflow.worklist.adf.InvokeActionBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+      <managed-property id="__16">
+        <property-name>isReturnActivity</property-name>
+        <value>true</value>
+      </managed-property>
+      <managed-property id="__17">
+        <property-name>taskFormVersion</property-name>
+        <value>121130</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__22">
+      <managed-bean-name>macUiBean</managed-bean-name>
+      <managed-bean-class>gov.laca.amp.modules.mac.backing.MacUiBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="mac-assignedpt-ownershipreviewer">
+      <page>/mac-assignedpt-ownershipreviewer/mac-assignedpt-ownershipreviewer.jsff</page>
+    </view>
+    <method-call id="loadAssignedPT">
+      <method>#{pageFlowScope.MacPerformBean.loadAssignedPT}</method>
+      <outcome>
+        <fixed-outcome>assignedPT</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="PerformTask">
+      <page>/mac-unassignedpt-btf/PerformTask.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__13">
+        <expression>#{pageFlowScope.rolevalue=='OwnershipApprover' or pageFlowScope.rolevalue== 'OwnershipApprover2'}</expression>
+        <outcome>owenershipapprover</outcome>
+      </case>
+      <case id="__14">
+        <expression>#{pageFlowScope.rolevalue=='OwnershipReviewer' or pageFlowScope.rolevalue=='OwnershipReviewer2' }</expression>
+        <outcome>ownershipreviewer</outcome>
+      </case>
+      <default-outcome>unauth</default-outcome>
+    </router>
+    <parent-action id="closeTF">
+      <parent-outcome>closeTaskFlow</parent-outcome>
+      <outcome>return</outcome>
+    </parent-action>
+    <method-call id="validateAinVisited">
+      <method>#{pageFlowScope.MacPerformBean.checkAinVisited}</method>
+      <outcome>
+        <fixed-outcome>validateAinVisited</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="editAggreg-btf">
+      <task-flow-reference>
+        <document>/WEB-INF/btf/editAggreg-btf.xml</document>
+        <id>editAggreg-btf</id>
+      </task-flow-reference>
+      <input-parameter id="__25">
+        <name>aggregateId</name>
+        <value>#{pageFlowScope.aggregateId}</value>
+      </input-parameter>
+      <input-parameter id="__26">
+        <name>ain</name>
+        <value>#{pageFlowScope.wuPriAIN}</value>
+      </input-parameter>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <method-call id="submittask">
+      <method>#{pageFlowScope.MacPerformBean.addEventParameters}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="unauth">
+      <page>/mac-unassignedpt-btf/unauth.jsff</page>
+    </view>
+    <control-flow-rule id="__5">
+      <from-activity-id>mac-assignedpt-ownershipreviewer</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>summaryview</from-outcome>
+        <to-activity-id>validateAinVisited</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome>closeTF</from-outcome>
+        <to-activity-id>closeTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome>showEditAggregate</from-outcome>
+        <to-activity-id>editAggreg-btf</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>PerformTask</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>mac-assignedpt-ownershipreviewer</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome>closeTF</from-outcome>
+        <to-activity-id>closeTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>loadAssignedPT</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>assignedPT</from-outcome>
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>ownershipreviewer</from-outcome>
+        <to-activity-id>mac-assignedpt-ownershipreviewer</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>owenershipapprover</from-outcome>
+        <to-activity-id>PerformTask</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome>unauth</from-outcome>
+        <to-activity-id>unauth</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>validateAinVisited</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>validateAinVisited</from-outcome>
+        <to-activity-id>PerformTask</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id>submittask</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome>closeTF</from-outcome>
+        <to-activity-id>closeTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome>submit</from-outcome>
+        <to-activity-id>submittask</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

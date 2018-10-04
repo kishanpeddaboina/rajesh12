@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>laca.gov.amp.bpm</groupId>
+  <artifactId>OwnershipApplication</artifactId>
+  <version>${ASSESSOR_PORTAL_VERSION}</version>
+  <description>Super POM for Ownership</description>
+  <packaging>pom</packaging>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/</directory>
+        <includes>
+          <include>**</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+  <modules>
+	<module>MACApproveUIDeployer</module>
+	<module>MACPerformUIDeployer</module>
+  </modules>
+</project>

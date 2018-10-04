@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="runPageDef"
+                Package="macperformworktaskui.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="macunassignedptbtf1" taskFlowId="/WEB-INF/btf/mac-unassignedpt-btf.xml#mac-unassignedpt-btf"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="ain" value="6006008008"/>
+        <parameter id="aoid" value="11326042"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="macunassignedptbtf2" taskFlowId="/WEB-INF/btf/mac-unassignedpt-btf.xml#mac-unassignedpt-btf"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="ain" value="6006008008"/>
+        <parameter id="aoid" value="11326042"/>
+      </parameters>
+    </taskFlow>
+      <taskFlow id="macassignedptownershipreviewerbtf1" Refresh="ifNeeded"
+              taskFlowId="/WEB-INF/btf/mac-assignedpt-ownershipreviewer-btf.xml#mac-assignedpt-ownershipreviewer-btf"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="macassignedptownershipreviewerbtf2"
+              taskFlowId="/WEB-INF/btf/mac-assignedpt-ownershipreviewer-btf.xml#mac-assignedpt-ownershipreviewer-btf"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+           <parameter id="rolevalue" value="OwnershipReviewer2"/>
+        <parameter id="ain_text" value="3141020014,3141020015"/>
+        <parameter id="workUnitId" value="2622"/>
+      </parameters>
+  
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

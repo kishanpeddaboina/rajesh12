@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="mac_assignedpt_ownershipreviewer_btf_mac_assignedpt_ownershipreviewer_btf_loadAssignedPTPageDef"
+                Package="btf" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="MACPerformWorkTaskUI_PerformWorkTask" RangeSize="25"
+                    BeanClass="MACPerformWorkTaskUI_PerformWorkTask.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.task" id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PerformWorkTaskPayloadType" id="payloadIterator"/>
+    <accessorIterator id="AMPWorkTaskIterator" MasterBinding="payloadIterator" Binds="AMPWorkTask" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="AINList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AINList" id="AINListIterator"/>
+    <accessorIterator id="AINIterator" MasterBinding="AINListIterator" Binds="AIN" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AIN"/>
+    <accessorIterator id="WorkTaskDetailsIterator" MasterBinding="AMPWorkTaskIterator" Binds="WorkTaskDetails"
+                      RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.WorkTaskDetails"/>
+    <accessorIterator id="systemAttributesIterator" MasterBinding="taskIterator" Binds="systemAttributes" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.systemAttributesType"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="PropertyIdentificationList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList"
+                      id="PropertyIdentificationListIterator"/>
+    <accessorIterator id="PropertyIdentificationIterator" MasterBinding="PropertyIdentificationListIterator"
+                      Binds="PropertyIdentification" RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType"/>
+    <iterator Binds="root" RangeSize="25" DataControl="MacDC" id="MacDCIterator"/>
+    <accessorIterator id="mailingAddrPojoListIterator" MasterBinding="MacDCIterator" Binds="mailingAddrPojoList"
+                      RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.MailingAddrPayloadDO"/>
+    <accessorIterator id="mailingAddrIterator" MasterBinding="mailingAddrPojoListIterator" Binds="mailingAddr"
+                      RangeSize="25" DataControl="MacDC" BeanClass="gov.laca.amp.modules.mac.pojo.AddrPojo"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="customAttributes" RangeSize="10"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.customAttributesType"
+                      id="customAttributesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                  InstanceName="bindings.getTaskDetails.dataControl"
+                  ReturnName="data.MACPerformWorkTaskUI_PerformWorkTask.methodResults.getTaskDetails_getTaskDetails_dataControl_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="WorkTaskDetailsIterator" id="Milestone">
+      <AttrNames>
+        <Item Value="Milestone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="systemAttributesIterator" id="substate">
+      <AttrNames>
+        <Item Value="substate"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="loadMacData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadMacData"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.loadMacData.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.loadMacData_loadMacData_dataControl_dataProvider_loadMacData_result">
+      <NamedData NDName="workUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="ains" NDType="java.util.List"/>
+      <NamedData NDName="rolevalue" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="inCareOf">
+      <AttrNames>
+        <Item Value="inCareOf"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="origInCareOf">
+      <AttrNames>
+        <Item Value="origInCareOf"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="customAttributesIterator" id="customAttributeString2">
+      <AttrNames>
+        <Item Value="customAttributeString2"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

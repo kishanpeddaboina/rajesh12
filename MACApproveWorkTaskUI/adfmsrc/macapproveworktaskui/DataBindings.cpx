@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.16.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="macapproveworktaskui" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/ApproveWorkTask_TaskDetails.jspx" usageId="macapproveworktaskui_ApproveWorkTask_TaskDetailsPageDef"/>
+    <page path="/ApproveWorkTask_TaskNotification.jspx"
+          usageId="macapproveworktaskui_ApproveWorkTask_TaskNotificationPageDef"/>
+    <page path="/amp-mac-reqinfo-btf/macReqInfo.jsff" usageId="macapproveworktaskui_macReqInfoPageDef"/>
+    <page path="/WEB-INF/btf/amp-mac-reqinfo-btf.xml#amp-mac-reqinfo-btf@loadMacData"
+          usageId="macapproveworktaskui_amp_mac_reqinfo_btf_amp_mac_reqinfo_btf_loadMacDataPageDef"/>
+    <page path="/amp-mac-reqinfo-btf/macRequestInfo.jsff" usageId="macapproveworktaskui_macRequestInfoPageDef"/>
+    <page path="/main.jspx" usageId="macapproveworktaskui_mainPageDef"/>
+    <page path="/WEB-INF/ApproveWorkTask_TaskFlow.xml#ApproveWorkTask_TaskFlow@loadData"
+          usageId="macapproveworktaskui_ApproveWorkTask_TaskFlow_ApproveWorkTask_TaskFlow_loadDataPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="macapproveworktaskui_ApproveWorkTask_TaskDetailsPageDef"
+          path="macapproveworktaskui.pageDefs.ApproveWorkTask_TaskDetailsPageDef"/>
+    <page id="macapproveworktaskui_ApproveWorkTask_TaskNotificationPageDef"
+          path="macapproveworktaskui.pageDefs.ApproveWorkTask_TaskNotificationPageDef"/>
+    <page id="macapproveworktaskui_macReqInfoPageDef" path="amp_mac_reqinfo_btf.macReqInfoPageDef"/>
+    <page id="macapproveworktaskui_amp_mac_reqinfo_btf_amp_mac_reqinfo_btf_loadMacDataPageDef"
+          path="btf.amp_mac_reqinfo_btf_amp_mac_reqinfo_btf_loadMacDataPageDef"/>
+    <page id="macapproveworktaskui_macRequestInfoPageDef" path="amp_mac_reqinfo_btf.macRequestInfoPageDef"/>
+    <page id="macapproveworktaskui_mainPageDef" path="macapproveworktaskui.pageDefs.mainPageDef"/>
+    <page id="macapproveworktaskui_ApproveWorkTask_TaskFlow_ApproveWorkTask_TaskFlow_loadDataPageDef"
+          path="macapproveworktaskui.pageDefs.ApproveWorkTask_TaskFlow_ApproveWorkTask_TaskFlow_loadDataPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="MacDC" path="gov.laca.amp.modules.MacDC"/>
+    <dc id="MACApproveWorkTaskUI_ApproveWorkTask" path="macapproveworktaskui.MACApproveWorkTaskUI_ApproveWorkTask"/>
+  </dataControlUsages>
+</Application>

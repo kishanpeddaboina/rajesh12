@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="mac_unassignedpt_btf_mac_unassignedpt_btf_loadDataPageDef" Package="btf" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="loadMacData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadMacData"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.loadMacData.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.loadMacData_loadMacData_dataControl_dataProvider_loadMacData_result">
+      <NamedData NDName="workUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="ains" NDType="java.util.List"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

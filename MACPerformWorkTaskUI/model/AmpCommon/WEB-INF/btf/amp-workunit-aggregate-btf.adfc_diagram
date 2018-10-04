@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="x">96.024414</property>
+      <property
+         name="y">266.5</property>
+   </OverallProperties>
+   <View
+      id="View2">
+      <property
+         name="activityId">amp-work-unit-aggregate</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">299.08008</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>amp-work-unit-aggregate&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">91.149414</property>
+      <property
+         name="page">/amp-workunit-aggregate-btf/amp-work-unit-aggregate.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">loadWrkUnitAggData</property>
+      <property
+         name="x">96.024414</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>loadWrkUnitAggData&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="y">98.79883</property>
+      <property
+         name="exceptionHandler">false</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View2">
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromOutcome">loadWrkUnitAggData</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R50,137.02441,98.44824,258.08008,90.79883,L50</property>
+   </ControlFlowCase>
+</SDM>

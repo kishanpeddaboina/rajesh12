@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <c:set var="macapproveworktaskuiBundle" value="#{adfBundle['macapproveworktaskui.MACApproveWorkTaskUIBundle']}"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:trh="http://myfaces.apache.org/trinidad/html"
+            xmlns:wf="http://xmlns.oracle.com/bpel/workflow/workflow-taglib.tld"
+            xmlns:wlc="http://xmlns.oracle.com/bpel/workflow/worklist">
+        <af:document title="ApproveWorkTask_TaskDetails.jspx" id="d1" clientComponent="true" onunload="performUnloadEvent">
+            <af:messages id="m1"/>
+            <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
+            <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
+              <af:resource type="javascript" source="/resources/js/ampbpmutil.js"/>
+            <af:serverListener type="handleOnUnload" method="#{pageFlowScope.MacApproveBean.onUnload}"/> 
+            <af:form id="f1" usesUpload="true">
+                <af:panelHeader text="#{macapproveworktaskuiBundle.NewMailingAddress}" id="ph2"
+                                styleClass="AMPBPMListViewStyle" inlineStyle="min-width: 1450px;"
+                                rendered="#{pageFlowScope.rolevalue != null &amp;&amp; pageFlowScope.rolevalue != ''}">
+                    <af:panelBox text="#{macapproveworktaskuiBundle.IN_CARE_OF_} #{bindings.inCareOf.inputValue}"
+                                 id="pb1" showDisclosure="false" styleClass="AMPBPMPanelBox"></af:panelBox>
+                    <af:panelBox text="#{bindings.street1.inputValue == null ? '' : bindings.street1.inputValue}, #{bindings.city1.inputValue == null ? '' : bindings.city1.inputValue}, #{bindings.state1.inputValue == null ? '' : bindings.state1.inputValue}, #{bindings.zip1.inputValue ? '' : bindings.zip1.inputValue }, #{bindings.country1.inputValue == null ? '' : bindings.country1.inputValue}" id="pb2" showDisclosure="false"
+                                 styleClass="AMPBPMPanelBox"></af:panelBox>
+                   
+                    <af:listView value="#{bindings.ainList1.collectionModel}" var="item"
+                                 emptyText="#{bindings.ainList1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                 fetchSize="10000" id="lv2">
+                        <af:listItem id="li1">
+                            <af:panelGridLayout id="pgl1">
+                                <af:gridRow marginTop="5px" height="auto" id="gr1">
+                                    <af:gridCell marginStart="5px" width="18%" id="gc1" marginEnd="5px">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.AIN_}" id="plam1">
+                                            <af:outputFormatted value="#{item.bindings.ainDisplay.inputValue}" id="of1"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" width="40%" id="gc2" marginEnd="5px">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.ASSESSEE_NAME_}"
+                                                                 id="plam2" >
+                                            <af:outputText value="#{item.bindings.assesseeName.inputValue}" inlineStyle="width: 440px;word-wrap:break-word;display: block;" id="of2"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="10px" width="20%" id="gc3" marginEnd="5px">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.RecordingDate}"
+                                                                 id="plam3">
+                                            <af:outputFormatted value="#{item.bindings.recordingDate.inputValue}"
+                                                                id="of3">
+                                                <af:convertDateTime pattern="#{bindings.ainList1.hints.recordingDate.format}"/>
+                                            </af:outputFormatted>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" width="10%" id="gc4" marginEnd="5px">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.SEQ__}"
+                                                                 id="plam14">
+                                            <af:outputFormatted value="#{item.bindings.seqNumber.inputValue}"
+                                                                id="of14"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" width="10%" marginEnd="5px" id="gc5">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle['Doc.']}"
+                                                                 id="plam4">
+                                            <af:outputFormatted value="#{item.bindings.docId.inputValue}" id="of4"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                     <af:gridCell id="gc10" marginStart="5px"  marginEnd="5px" rowSpan="1" width="2%"
+                                                 halign="end">
+                             <af:image source="/img/ownedInvestigate.png" shortDesc="AIN is owned by Investigator" id="i16"
+                                          rendered="#{item.bindings.isOwnedByInvestigators.inputValue eq true}"/>
+                             
+                          
+                        </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow marginTop="15px" height="auto" id="gr2">
+                                    <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc6">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.CurrentSitusAddress}"
+                                                                 id="plam6" >
+                                            <af:outputText value="#{item.bindings.currentSitusAddress.inputValue}"
+                                                           id="of6"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell marginStart="5px" marginEnd="5px"  id="gc8">
+                                        <af:panelGroupLayout id="pgl16" inlineStyle="width:120px;">
+                                            <af:image source="/img/Approved-24.png" shortDesc="#{item.bindings.remarks.inputValue}" id="i1"
+                                                      rendered="#{item.bindings.isApproveAddrChange.inputValue eq true}"/>
+                                            <af:image source="/img/Denied-24.png"
+                                                      shortDesc="#{item.bindings.remarks.inputValue}" id="i2"
+                                                      rendered="#{item.bindings.isDenyAddrChange.inputValue eq true}"/>
+                                            <af:image source="/img/InvestigateMailing-24.png"
+                                                      shortDesc="#{item.bindings.remarks.inputValue}" id="i3"
+                                                      rendered="#{item.bindings.isMailingAddrInvestigationReq.inputValue eq true}"/>
+                                            <af:image source="/img/InvestigateSitus-24.png"
+                                                      shortDesc="#{item.bindings.situsAddrInvestigationNotes.inputValue}"
+                                                      id="i4"
+                                                      rendered="#{item.bindings.isSitusAddrInvestigationReq.inputValue eq true}"/>
+                                            <f:facet name="separator">
+                                             <af:spacer width="20" height="10" id="s2"/>
+                                            </f:facet>
+                                        </af:panelGroupLayout>
+                                    </af:gridCell>
+                                </af:gridRow>
+                                <af:gridRow marginTop="15px" height="auto" marginBottom="5px" id="gr3">
+                                    <af:gridCell marginStart="5px" columnSpan="5" marginEnd="5px" id="gc7" width="98%">
+                                        <af:panelLabelAndMessage label="#{macapproveworktaskuiBundle.CurrentMailingAddress}"
+                                                                 id="plam7" >
+                                            <af:outputText value="#{item.bindings.currentMailingAddress.inputValue}"
+                                                           id="of7"/>
+                                        </af:panelLabelAndMessage>
+                                    </af:gridCell>
+                                    <af:gridCell id="gc9" marginStart="5px"  marginEnd="5px" rowSpan="1" width="2%"
+                                                 halign="end">
+                           
+                           
+                                <af:image source="/img/isVisted.png" shortDesc="AIN has been visited/reviewed" id="i15"
+                                          rendered="#{item.bindings.isVisited.inputValue eq true}"/>
+                           
+                        </af:gridCell>
+                                </af:gridRow>
+                            </af:panelGridLayout>
+                        </af:listItem>
+                    </af:listView>
+                     <af:spacer width="10" height="10" id="s31"/>
+                    <af:region value="#{bindings.ampsupportingdocsbtf1.regionModel}" id="r1"/>
+                    <af:spacer width="10" height="10" id="s4"/>
+                      <af:panelGroupLayout id="pgl0" layout="horizontal"  halign="left" styleClass="AFStrecthWidth">
+                        <af:spacer width="10" height="10" id="s3"/>
+                        <af:commandButton id="commentSubmit" text="#{resources.POST_COMMENT}"
+                                                  partialSubmit="true"
+                                                
+                                                  action="#{pageFlowScope.MacApproveBean.postComment}"/>
+                                                  
+                        <af:commandButton actionListener="#{invokeActionBean.setOperation}"
+                                           text="#{wf:getResourceValue('Approve', 'bindings.customActions')}"
+                                           disabled="#{!bindings.Approve.enabled}"
+                                           action="#{pageFlowScope.MacApproveBean.doAction}" partialSubmit="false"
+                                           visible="#{wf:isCustomActionAvailable('Approve', 'bindings.customActions')}"
+                                           id="b3">
+                                    <f:attribute name="DC_OPERATION_BINDING" value="bindings.Approve"/>
+                                     <af:setPropertyListener from="Approve" to="#{pageFlowScope.lstbpmaction}" type="action"/>
+                                </af:commandButton>
+                                <af:commandButton actionListener="#{invokeActionBean.setOperation}"
+                                           text="#{wf:getResourceValue('Redo', 'bindings.customActions')}"
+                                           disabled="#{!bindings.Redo.enabled}"
+                                           action="#{pageFlowScope.MacApproveBean.doAction}" partialSubmit="false"
+                                           visible="#{wf:isCustomActionAvailable('Redo', 'bindings.customActions')}"
+                                           id="b5">
+                                    <f:attribute name="DC_OPERATION_BINDING" value="bindings.Redo"/>
+                                     <af:setPropertyListener from="Redo" to="#{pageFlowScope.lstbpmaction}" type="action"/>
+                                </af:commandButton>
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="s1"/>
+                        </f:facet>
+                    </af:panelGroupLayout>
+                    <af:showDetailHeader size="2" text="#{resources.COMMENTS}"
+                                         disclosed="#{actionAvailable.discloseComments}" contentStyle="padding: 5px;"
+                                         partialTriggers="commentSubmit" id="sdh1">
+                        <af:panelGroupLayout layout="vertical" inlineStyle="padding:10px;" id="dc_pgl1">
+                            <af:inputText id="cmtBox_2" rows="2" columns="80" wrap="off" partialTriggers="commentSubmit"
+                                          value="#{commentBean.value}" visible="#{actionAvailable.isCommentUpdatable}"
+                                          maximumLength="2000" label="" inlineStyle="text-align:left;"/>
+                            <af:spacer height="5" rendered="#{actionAvailable.isCommentUpdatable}" id="s111"/>
+                            <af:toolbar rendered="#{actionAvailable.isCommentUpdatable}" id="t4">
+                                <!--<af:commandButton id="commentSubmit" text="#{resources.POST_COMMENT}"
+                                                  partialSubmit="true"
+                                                  actionListener="#{bindings.CreateInsert2.execute}"
+                                                  action="#{commentBean.addComment}"/>-->
+                              
+                            </af:toolbar>
+                            <af:spacer height="10" id="dc_s7" rendered="#{actionAvailable.isCommentUpdatable}"/>
+                            <af:outputText value="#{resources.NO_ROWS_YET}"
+                                           rendered="#{(actionAvailable.isCommentUpdatable) and (empty bindings.userComment)}"
+                                           id="ot3"/>
+                            <af:forEach items="#{bindings.userComment.children}" var="row">
+                                <af:panelGroupLayout id="pgl139" layout="horizontal" valign="top">
+                                    <af:image source="/images/simple_16x16.png" id="i19"/>
+                                    <af:spacer width="10" height="10" id="s27"/>
+                                    <af:panelGroupLayout id="pgl99" layout="vertical">
+                                        <af:panelGroupLayout id="pgl69" layout="horizontal">
+                                            <af:switcher facetName="#{row.updatedBy.displayName != null}" id="s17">
+                                                <f:facet name="true">
+                                                    <af:group id="g12">
+                                                        <af:outputText value="#{row.updatedBy.displayName}" id="ot59"
+                                                                       inlineStyle="font-weight:bold;"/>
+                                                        <af:spacer width="10" height="10" id="s129"/>
+                                                        <af:outputText value="#{row.updatedDate}" id="ot119"
+                                                                       inlineStyle="font-size:x-small; color:Gray;">
+                                                            <f:converter converterId="dateTimeConvertor"/>
+                                                        </af:outputText>
+                                                    </af:group>
+                                                </f:facet>
+                                                <f:facet name="false">
+                                                    <af:group id="g11">
+                                                        <af:outputText value="#{pageFlowScope.ADFHumanTaskBean.workflowContext.user}"
+                                                                       inlineStyle="font-weight:bold;" id="ot15"/>
+                                                        <af:spacer width="10" height="10" id="s32"/>
+                                                        <af:outputText value="#{resources.TODAY}" id="ot12"/>
+                                                    </af:group>
+                                                </f:facet>
+                                            </af:switcher>
+                                        </af:panelGroupLayout>
+                                        <af:spacer width="10" height="5" id="s59"/>
+                                        <af:outputText value="#{row.comment}" id="ot419"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:forEach>
+                        </af:panelGroupLayout>
+                    </af:showDetailHeader>
+                </af:panelHeader>
+                <af:panelGroupLayout id="pgl2" layout="vertical" halign="center" inlineStyle="padding-top: 100px;" 
+                                     rendered="#{pageFlowScope.rolevalue == null || pageFlowScope.rolevalue == ''}">
+                <af:outputText value="You are not authorized to act on this task." id="opt1"
+                   inlineStyle="font-size:large; font-weight:bold;"/>
+                </af:panelGroupLayout>
+            </af:form>
+             <af:clientListener method="onPageLoad" type="load"/>
+  <f:facet name="metaContainer">
+    <af:resource type="javascript">
+      function onPageLoad(evt) {
+        window.resizeTo(window.innerWidth, window.innerHeight);
+      }
+    </af:resource>
+  </f:facet>
+        </af:document>
+    </f:view>
+</jsp:root>

@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <c:set var="macperformworktaskuiBundle" value="#{adfBundle['macperformworktaskui.MACPerformWorkTaskUIBundle']}"/>
+    <af:panelHeader text="New Mailing Address" id="ph2" styleClass="AMPBPMListViewStyle" inlineStyle="min-width: 1380px;">
+        <af:panelBox text="#{macperformworktaskuiBundle.InCareof} #{fn:toUpperCase(pageFlowScope.MacPerformBean.fetchedincareof)}" id="pb1" showDisclosure="false" rendered="#{bindings.inCareOf.inputValue ne null}" styleClass="AMPBPMPanelBox"></af:panelBox>
+        <af:panelBox text="#{pageFlowScope.MacPerformBean.retrivedMailingAddr}" id="pb2" showDisclosure="false"
+                    styleClass="AMPBPMPanelBox"></af:panelBox>
+        <af:listView value="#{bindings.ainList2.collectionModel}" var="item"
+                     emptyText="#{bindings.ainList2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="10000" id="lv2">
+            <af:listItem id="li1">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" id="gr1">
+                        <af:gridCell marginStart="5px" width="18%" id="gc1">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.AIN_}" id="plam1"
+                                                     labelStyle="width:20%">
+                                <af:outputText value="#{item.bindings.ainDisplay.inputValue}" id="of1"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="40%" id="gc2">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.ASSESSEE_NAME_}" id="plam2"
+                                                     >
+                                <af:outputText value="#{item.bindings.assesseeName.inputValue}" inlineStyle="width: 440px;word-wrap:break-word;display: block;" id="of2"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="10px" width="20%" id="gc3">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.RecordingDate}" id="plam3">
+                                <af:outputFormatted value="#{item.bindings.recordingDate.inputValue}" id="of3">
+                                <af:convertDateTime pattern="#{bindings.ainList2.hints.recordingDate.format}"/>
+                            </af:outputFormatted>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="10%" id="gc4">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.SEQ__}" id="plam4">
+                                <af:outputText value="#{item.bindings.seqNumber.inputValue}" id="of4"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="10%" marginEnd="5px" id="gc5">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle['Doc.']}" id="plam5">
+                                <af:outputText value="#{item.bindings.docId.inputValue}" id="of5"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell id="gc10" marginStart="5px"  marginEnd="5px" rowSpan="1" width="2%"
+                                                 halign="end">
+                           
+                             <af:image source="/img/ownedInvestigate.png" shortDesc="AIN is owned by Investigator" id="i16"
+                                          rendered="#{item.bindings.isOwnedByInvestigators.inputValue eq true}"/>
+                             
+                         
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="15px" height="auto" id="gr2">
+                        <af:gridCell marginStart="5px" columnSpan="3" marginEnd="5px" id="gc6">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle.CurrentSitusAddress}"
+                                                     id="plam6" >
+                                <af:outputText value="#{item.bindings.currentSitusAddress.inputValue}" id="of6"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" marginEnd="5px"  id="gc8">
+                            <!--<af:panelGroupLayout id="pgl16" inlineStyle="width:120px;"
+                                                 rendered="#{pageFlowScope.MacPerformBean.viewmode == 'summaryview'}">-->
+                            <af:panelGroupLayout id="pgl16" inlineStyle="width:120px;">
+
+                                <af:image source="/img/Approved-24.png" shortDesc="#{item.bindings.remarks.inputValue}" id="i1"
+                                          rendered="#{item.bindings.isApproveAddrChange.inputValue eq true}"/>
+                                <af:image source="/img/Denied-24.png" shortDesc="#{item.bindings.remarks.inputValue}"
+                                          id="i2" rendered="#{item.bindings.isDenyAddrChange.inputValue eq true}"/>
+                                <af:image source="/img/InvestigateMailing-24.png"
+                                          shortDesc="#{item.bindings.remarks.inputValue}" id="i3"
+                                          rendered="#{item.bindings.isMailingAddrInvestigationReq.inputValue eq true}"/>
+                                <af:image source="/img/InvestigateSitus-24.png"
+                                          shortDesc="#{item.bindings.situsAddrInvestigationNotes.inputValue}" id="i4"
+                                          rendered="#{item.bindings.isSitusAddrInvestigationReq.inputValue eq true}"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="20" height="10" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                    <af:gridRow marginTop="15px" height="auto" marginBottom="5px"  id="gr3">
+                        <af:gridCell marginStart="5px" columnSpan="5" marginEnd="5px"  id="gc7" width="98%">
+                            <af:panelLabelAndMessage label="#{macperformworktaskuiBundle._MAILING_ADDRESS_}"
+                                                     id="plam7" >
+                                <af:outputText value="#{item.bindings.currentMailingAddress.inputValue}" id="of7"/>
+                            </af:panelLabelAndMessage>
+                        </af:gridCell>
+                        <af:gridCell id="gc9" marginStart="5px"  marginEnd="5px" rowSpan="1" width="2%"
+                                                 halign="end">
+                           
+                          
+                                <af:image source="/img/isVisted.png" shortDesc="AIN has been visited/reviewed" id="i5"
+                                          rendered="#{item.bindings.isVisited.inputValue eq true}"/>
+                          
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:listItem>
+        </af:listView>
+        <af:region value="#{bindings.ampsupportingdocsbtf1.regionModel}" id="r2"/>
+        <!-- rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2}"
+-->
+        <af:spacer width="10" height="10" id="s4" rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2}"/>
+        <af:panelGroupLayout id="pgl2" layout="horizontal" rendered="#{pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2}">
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:button text="Back" id="b1"
+          rendered="#{pageFlowScope.milestone != 'Unassigned' and ( pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2 )}"
+          
+                       action="#{pageFlowScope.MacPerformBean.backAction}"/>
+            <af:button text="Submit For Approval" disabled="#{!pageFlowScope.MacPerformBean.checkAinStatus}" id="b2"
+                       rendered="#{pageFlowScope.milestone != 'Unassigned' and (pageFlowScope.MacPerformBean.ownershipReviewer or pageFlowScope.MacPerformBean.ownershipReviewer2)}"
+                       action="#{pageFlowScope.MacPerformBean.submitAction}">
+                     <af:setPropertyListener from="SUBMIT_CLICK" to ="#{pageFlowScope.buttonClick}" type="action"/>
+               </af:button>
+            <af:button text="Submit Task" id="b3" clientComponent="true" visible="false"
+                       binding="#{macUiBean.aggrSubmitBtn}"
+                       action="#{pageFlowScope.MacPerformBean.addEventParameters}"/>
+            <f:facet name="separator">
+                <af:spacer width="10" height="1" id="s1"/>
+            </f:facet>
+        </af:panelGroupLayout>
+        <!--<af:listView value="#{bindings.ainList2.collectionModel}" var="item"
+                 emptyText="#{bindings.ainList2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                 fetchSize="#{bindings.ainList2.rangeSize}" id="lv1">
+        <af:listItem id="li1">
+            <af:panelGroupLayout layout="horizontal" id="pgl20">
+                <f:facet name="separator">
+                    <af:spacer width="10" id="s1"/>
+                </f:facet>
+                <af:outputFormatted value="#{item.bindings.currentMailingAddress.inputValue}" id="of6"/>
+                <af:outputFormatted value="#{item.bindings.currentSitusAddress.inputValue}" id="of10"/>
+                <af:outputFormatted value="#{item.bindings.ain.inputValue}" id="of11"/>
+                <af:outputFormatted value="#{item.bindings.aoid.inputValue}" id="of12">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.ainList2.hints.aoid.format}"/>
+                </af:outputFormatted>
+                <af:outputFormatted value="#{item.bindings.parcelStatus.inputValue}" id="of13"/>
+                <af:outputFormatted value="#{item.bindings.communityName.inputValue}" id="of15"/>
+                <af:outputFormatted value="#{item.bindings.assesseeName.inputValue}" id="of16"/>
+                <af:outputFormatted value="#{item.bindings.recordingDate.inputValue}" id="of17">
+                    <af:convertDateTime pattern="#{bindings.ainList2.hints.recordingDate.format}"/>
+                </af:outputFormatted>
+                <af:outputFormatted value="#{item.bindings.seqNumber.inputValue}" id="of18"/>
+                <af:outputFormatted value="#{item.bindings.docId.inputValue}" id="of19"/>
+                <af:outputFormatted value="#{item.bindings.district.inputValue}" id="of20"/>
+                <af:outputFormatted value="#{item.bindings.region.inputValue}" id="of21"/>
+                <af:outputFormatted value="#{item.bindings.cluster.inputValue}" id="of22"/>
+                <af:outputFormatted value="#{item.bindings.isApproveAddrChange.inputValue}" id="of23"/>
+                <af:outputFormatted value="#{item.bindings.isDenyAddrChange.inputValue}" id="of24"/>
+                <af:outputFormatted value="#{item.bindings.isMailingAddrInvestigationReq.inputValue}" id="of25"/>
+                <af:outputFormatted value="#{item.bindings.remarks.inputValue}" id="of26"/>
+                <af:outputFormatted value="#{item.bindings.isSitusAddrInvestigationReq.inputValue}" id="of27"/>
+                <af:outputFormatted value="#{item.bindings.situsAddrInvestigationNotes.inputValue}" id="of28"/>
+                <af:outputFormatted value="#{item.bindings.isVisited.inputValue}" id="of29"/>
+            </af:panelGroupLayout>
+        </af:listItem>
+    </af:listView>-->
+        <af:popup id="aggWrkUnitPopup" autoCancel="disabled" launcherVar="source" contentDelivery="lazyUncached"
+                  binding="#{macUiBean.aggregatePopup}">
+            <!--<af:setPropertyListener from="#{source.attributes.AggregatedId}" to="#{pageFlowScope.aggregateId}" type="popupFetch"/>-->
+            <af:dialog id="d1" resize="on" stretchChildren="first" closeIconVisible="true" type="none" modal="true"
+                       styleClass="AMPReadOnlyDialog" contentWidth="1200" contentHeight="600">
+             
+                    <af:region value="#{bindings.ampaggregateassessmentunitbtf1.regionModel}" id="r1"
+                               regionNavigationListener="#{macUiBean.aggrCloseListener}"/>
+          
+            </af:dialog>
+        </af:popup>
+    </af:panelHeader>
+</jsp:root>

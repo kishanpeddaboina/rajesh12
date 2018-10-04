@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.2.1.16.48" id="AMPWorkTask"
+          Package="MACPerformWorkTaskUI_PerformWorkTask" BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask"
+          isJavaBased="false">
+  <Attribute Name="EventType" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="BusinessEventType"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Event Type"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="EventType"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="BusinessEventType" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="EventSource"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Business Event Type"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="BusinessEventType"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="EventSource" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Category"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Event Source"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="EventSource"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Category" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Subcategory"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Category"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Category"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Subcategory" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="DocumentId"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Subcategory"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Subcategory"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="DocumentId" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="AggregatedId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Document Id"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="DocumentId"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="AggregatedId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="AggregatedId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="District"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="Aggregated Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="District" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Region"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="District"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="District"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Region" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Cluster"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Region"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Region"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Cluster" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/ao/propertyIdentification"/>
+        <Property Name="nextSibling" Value="PropertyIdentificationList"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Cluster"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Cluster"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="PackageId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="PackageId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="PSRId"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="Package Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="PSRId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="PSRId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="EventDate"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="PSR Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="EventDate" Type="java.sql.Date">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="PSRNumber"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Event Date"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="EventDate"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="date"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="PSRNumber" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WorkUnitId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="PSR Number"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="PSRNumber"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="WorkUnitId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="WorkUnitId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WorkUnitName"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="Work Unit Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="WorkUnitName" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WorkTaskDetails"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Work Unit Name"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="WorkUnitName"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="IsReview" Type="java.lang.Boolean">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Status"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Is Review"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="IsReview"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.Boolean"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Status" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="InstanceId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Status"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Status"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="InstanceId" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="TransactionId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Instance Id"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="InstanceId"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="TransactionId" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="MasterWorkUnitId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Transaction Id"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="TransactionId"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="MasterWorkUnitId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="MasterWorkUnitId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="ReviewWorkUnitId"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="Master Work Unit Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="ReviewWorkUnitId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="ReviewWorkUnitId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="DCAId"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="Review Work Unit Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="DCAId" Type="java.lang.Integer">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minInclusive" Value="-2147483648"/>
+        <Property Name="originalName" Value="DCAId"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="Message"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="LABEL" Value="DCA Id"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="maxInclusive" Value="2147483647"/>
+        <Property Name="type" Value="java.lang.Integer"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Message" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="IsValidationRequired"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Message"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="Message"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="IsValidationRequired" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="WCCId"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Is Validation Required"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="IsValidationRequired"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="WCCId" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="BarCode"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="WCC Id"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="WCCId"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="BarCode" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="nextSibling" Value="NextAssignee"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Bar Code"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="BarCode"/>
+        <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute id="WorkTaskDetails" IsCollection="true"
+                     BeanClass="MACPerformWorkTaskUI_PerformWorkTask.WorkTaskDetails"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.WorkTaskDetails_WorkTaskDetails_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+      <Property Name="nextSibling" Value="IsReview"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Work Task Details"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="WorkTaskDetails"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="NextAssignee" IsCollection="true" BeanClass="MACPerformWorkTaskUI_PerformWorkTask.NextAssignee"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.NextAssignee_NextAssignee_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+      <Property Name="nextSibling" Value="PreviousAssignee"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Next Assignee"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="NextAssignee"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="PreviousAssignee" IsCollection="true"
+                     BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PreviousAssignee"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.PreviousAssignee_PreviousAssignee_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+      <Property Name="nextSibling" Value="ParameterList"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Previous Assignee"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="PreviousAssignee"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="ParameterList" IsCollection="true"
+                     BeanClass="MACPerformWorkTaskUI_PerformWorkTask.ParameterList"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.ParameterList_ParameterList_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Parameter List"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ParameterList"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="PropertyIdentificationList" IsCollection="true"
+                     BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList"
+                     CollectionBeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList_PropertyIdentificationList_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://assessor.lacounty.gov/amp/xsd/wumf/worktask"/>
+      <Property Name="nextSibling" Value="PackageId"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Property Identification List"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="PropertyIdentificationList"/>
+      <Property Name="targetNamespace" Value="http://assessor.lacounty.gov/amp/xsd/ao/propertyIdentification"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

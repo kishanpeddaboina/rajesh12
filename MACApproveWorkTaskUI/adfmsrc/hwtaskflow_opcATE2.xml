@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName>campwtt201.assessor.lacounty.gov</hostName>
+      <httpPort>7778</httpPort>
+      <httpsPort/>
+   </TaskFlowServer>
+<hwTaskFlow><WorkflowName>ApproveWorkTask</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/Ownership/MailingAddressChange/ApproveWorkTask</TaskDefinitionNamespace><TaskFlowId>ApproveWorkTask_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/ApproveWorkTask_TaskFlow.xml</TaskFlowFileName></hwTaskFlow></hwTaskFlows>

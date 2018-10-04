@@ -1,0 +1,4225 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('font-awesome-4.6.3/fonts/fontawesome-webfont.eot?v=4.6.3');
+  src: url('font-awesome-4.6.3/fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.6.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+ * Alta Skin
+ **/
+
+/* ------------------------------------------------------ */
+
+/**
+ * Use Helvetica Neue Light where available
+ */
+.AFDefaultFontFamily:alias
+{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+/* ------------------------------------------------------ */
+
+.WCPortalStickyFooter .WCPortalContainer {
+  margin-bottom:53px;
+}
+
+/* alta colors for branding area */
+.WCPortalBannerTop {
+  background-color: #F5F5F5;
+}
+
+.WCPortalBannerBottom {
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #FFFFFF;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* allow navigation row to be hidden */
+.WCNoNav .WCPortalBannerBottom {
+  height: 3px;
+}
+
+.WCPortalLogo {
+  font-size: 16px;
+  vertical-align: baseline;
+  margin-top: 3px;
+}
+
+/* alta font for branding title */
+af|link.WCPortalGlobalText .WCPortalTitle {
+  color: #454545;
+  text-transform: none;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+af|link.WCPortalGlobalText .WCPortalTitleSeparator {
+  color: #454545;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+af|link.WCPortalGlobalText .WCPortalSubTitle {
+  color: #454545;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+/* hide profile pic */
+.WCPortalUserPhoto {
+  visibility: hidden;
+}  
+
+/* move right since profile pic is gone */
+af|panelList.WCPortalHeaderNav,
+html .WCPortalNavigation .WCPortalUserName
+{
+  right: 0px;
+}
+
+af|panelList.WCPortalHeaderNav:rtl,
+html .WCPortalNavigation .WCPortalUserName:rtl
+{
+  left: 0px;
+  right:auto;
+}
+
+/* gray text for links in upper right */
+.WCPortalHeaderNav ul li a,
+.WCPortalHeaderNav ul li a:active,
+.WCPortalHeaderNav ul li a:visited,
+.WCPortalHeaderNav ul li a:hover {
+  color: #454545;
+}
+
+/* alta background for footer */
+.WCPortalFooter {
+  background-color: #EDEDED;
+  border-top-color: #D9DFE3;
+}
+
+/* different look for the down-caret */
+.WCLinkMenu
+{
+  /*background-image: url(/adf/webcenter/func_dropdown_16_ena.png);*/
+  padding-right: 16px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAH9JREFUeNpi/P//PwMlgHHUAIQBJiYmJGk8c+YMmGbCIrcUiP/jwX7IirEZkA3ED3FYPAuINxEy4AMQxwPxXzTxW0BchK6YCYdNB4G4A4n/C4ijgfgrsQaAQCMQn4ay60Hhhk0RPgN+A3EMEE8B4m5cilgIxBbI37nDPCkDBBgAoD02ArH88lwAAAAASUVORK5CYII=);
+}
+
+.WCLinkMenu:rtl
+{
+  padding-left: 16px;
+  padding-right: 0px;
+}
+.WCLinkMenu:hover
+{
+  background-image: url(/adf/webcenter/func_dropdown_16_ena.png);
+}
+
+/* ------------------------------------------------------ */
+
+/**
+ * this overrides a rule in webcenter-admin-internal.css.
+ */
+.WCPortalEdit af|toolbox.WCAssetToolbox af|toolbar::body
+{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
+/**
+ * Add extra margin to the bottom of all SDFs.
+ */
+af|showDetailFrame
+{
+  margin-bottom:10px;
+}
+
+/**
+ * Remove the bottom-border on "medium" SDFs
+ */
+.WCPortletContentMedium:alias
+{
+  border:none;
+}
+
+/* ====== Root class for the page template, used by skin editor feature ======= */
+.WCSiteTemplateRoot
+{
+  -tr-rule-ref: selector(".WCPageTemplate:alias");
+}
+
+.WCPageTemplate:alias
+{
+  background-color: transparent;
+  background-image: none;
+}
+
+/**
+ * Root class for the main content of the page (white box), used by skin editor feature 
+ */
+.WCContent
+{
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #D6DFE6;
+  border-radius: 2px;
+  background-color: #FFFFFF;
+  min-height: 200px;
+}
+
+/**
+ * Don't use left/right margin if it's inside a fixed-width container
+ */
+.WCPortalFixedWidth .WCContent {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/**
+ * Reduce max-width if we are adding the 10px padding in WCContent
+ */
+.WCPortalFixedWidth.WCContent {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ *  * Used to give the content of the page a transparent background
+ *   */
+.WCMessagePage .WCContent {
+  background-color: transparent;
+  border-style: none;
+}
+
+.WCMessagePage af|showDetailFrame::content {
+  background-color: transparent;
+}
+
+.WCMessagePage .WCPortalFooter {
+  display: none;
+}
+
+/*styles used in *inset layouts assets
+  for the narrower center content area
+ */
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+@media (min-width:768px) {
+    .container {
+        max-width: 750px;
+    }
+}
+
+@media (min-width:992px) {
+    .container {
+       max-width: 800px;
+    }
+}
+
+.wcnopaddingt af|panelCustomizable,
+.wcnopaddingb af|panelCustomizable
+{
+ padding:0px;
+}
+
+.wcnopaddingb af|showDetailFrame
+{
+ margin-bottom:0px;
+}
+
+/**
+ * Actions button
+ */
+.WCActionsButton
+{
+  height: 28px;
+  padding: 3px 5px 0px;
+  border: 1px solid #D9DFE3;
+  border-radius: 3px;
+  background-color: #FFFCF3;
+  background-image: none;
+}
+
+.WCActionsButton:hover
+{
+  background-color: transparent;
+}
+
+.WCActionsButton:depressed
+{
+  background-color: transparent;
+}
+
+/* ------------------------------------------------------ */
+
+/* workaround bug 13740153 and bug 13744481 color contrast */
+.AFFieldTextDisabled
+{
+  color: #666666;
+}
+
+/*Bug 17545809 color contrast*/
+af|table af|table::data-row:selected af|column::data-cell .AFFieldTextDisabled
+{
+  color: #505050;
+}
+
+.WCGlobalNavSeparator
+{
+ /* background-image: url("/adf/spaces/skins/fusion/images/toolbar_sm_gSeparator.png");*/
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAMCAYAAABIvGxUAAAAK0lEQVR42p2KuREAAATA7L+BAexgBsciKqXOs4FTJJcigMTlkfIKO82rQRuQxk95b4oL9AAAAABJRU5ErkJggg==);
+
+}
+
+/* don't need these since panelHeading draws its own line below */
+.WCSectionSeparator
+{
+  margin-top:20px;
+  margin-bottom:5px;
+  border-color: transparent;
+}
+
+/* let ADF render a normal heading, since they now include the underline */
+.WCPageHeading
+{
+  -tr-inhibit: border-bottom;
+  -tr-inhibit: line-height;
+  -tr-inhibit: height;
+  -tr-inhibit: margin-bottom;
+  -tr-inhibit: margin-top;
+}
+
+
+/**
+ **style used for bootstrap templates like mosaic and unicorn, which inherites alta 
+ ** for fixing the icon becomes smaller issue in the content area
+ ** it's overriding the style from bootstrap css
+ **/
+#content *
+{
+-webkit-box-sizing:content-box;
+-moz-box-sizing:content-box;
+box-sizing:content-box;
+}
+
+/* Style used for af:inputdate in events taskflow. Left padding has been set to 30px to fix the overlapping issue in alta skin. */
+.WCInputDate
+{
+  padding-left:30px;
+}
+
+.WCRichTextEditor af|richTextEditor::content
+{
+  width:600px;
+}
+
+/* Style to disable tab border in navigation pane */
+af|navigationPane-tabs::tab-end, af|navigationPane-tabs::tab-start
+{
+  width: 0px;
+}
+
+/*portal browser page use css sprites for performance improvement*/
+.WCSprite1
+{ 
+  background: url('/adf/webcenter/sprite1.png') no-repeat top left!important;
+  width: 32px; 
+  height: 32px;
+} 
+
+.WCSprite1.func_gear_32_ena 
+{ 
+  background-position: 0 0;
+} 
+
+.WCSprite1.func_home_32_ena
+{ 
+  background-position: 0 -42px!important;
+} 
+
+af|link.WCSprite3 img,
+af|button.WCSprite3 img
+{
+  background: url('/adf/webcenter/sprite3.png') no-repeat top left;
+  width: 16px;
+  height: 16px;
+}
+    
+af|link.WCSprite3:hover img,
+af|button.WCSprite3:hover img
+{
+  background: none;
+}   
+
+/**
+ **resize the image icon of the af link for Parcel Docs 
+ **/
+af|link::image
+{
+  width: 18px;
+  height: 18px;
+}
+
+af|link.func_flip_16_ena img
+{
+  background-position: 0 0!important;
+}
+
+af|button.func_search_16_ena img
+{
+  background-position: 0 -52px!important;
+}
+
+af|button.func_search_16_ena::image
+{
+   padding: 0!important;
+}
+
+.WCSprite3.func_lock_16_ena
+{ 
+  background: url('/adf/webcenter/sprite3.png') no-repeat top left;
+  width: 16px;
+  height: 16px;
+  background-position: 0 -26px!important;
+} 
+
+af|link.WCSprite2 img
+{
+  background: url('/adf/webcenter/sprite2.png') no-repeat top left;
+  width: 16px;
+  height: 16px;
+}
+    
+af|link.func_eye_16_ena img
+{
+  background-position: 0 -104px!important; 
+}
+
+af|link.func_delete_16_ena img
+{
+  background-position: 0 0!important;
+}
+
+af|link.func_info_16_ena img
+{
+  background-position: 0 -26px!important;
+}
+    
+af|link.func_pencil_16_ena img
+{
+  background-position: 0 -52px!important;
+}
+
+af|link.func_person_16_ena img
+{
+  background-position: 0 -78px!important; 
+}
+
+af|link.func_mail_16_ena img
+{
+  background-position: 0 -130px!important;
+}
+
+af|link.func_image_16_ena img
+{
+  background-position: 0 -156px!important;
+}
+
+
+
+/****************************** AMP Skin ********************************/
+
+
+/** 20161025.2020-C140565-Tim Lagerhausen
+Commented out this global margin change.
+If there is a need for 0 margin then a new class should be created
+This change caused all PDCR fields to move from center to left justified **/
+
+/** 
+* {
+  margin: 0;
+}
+**/
+
+html, body {
+  height: 100%;
+}
+
+/*************
+AMP ANIMATIONS
+**************/
+
+af|document::splash-screen-icon {
+
+}
+
+af|document {
+    background-color: #FFFFFF;
+    background-image:none;
+    font-weight: normal;
+    font-size: 13px;
+    font-weight: 300;
+    color: #333333;
+}
+
+.amp_page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -100px; 
+}
+.amp_page-wrap:after {
+  content: "";
+  display: block;
+}
+.amp_site-footer, .amp_page-wrap:after {
+  height:100px; 
+}
+.amp_site-footer {
+  background: orange;
+}
+
+.sizeReport{
+    font-size: 1em;
+    font-weight:bold;
+    border-radius: 5px; 
+    box-shadow: 0px 0px 3px 0px rgba(51,51,51,0.8);
+    background-color:Purple;
+    padding:2%;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 auto -75px !important;
+}
+ 
+/************************************************************************************
+MEDIA QUERIES
+*************************************************************************************/
+@media screen and (max-width:1024px) {
+    .page {
+        /*padding: 0 3% 0 3%;*/
+        margin: 0 auto;
+    }
+     
+     .sidebar1, .sidebar2 {
+        width:34.5%; 
+        float: left;
+        margin:0 0 .5% 0;
+    }
+}
+ 
+@media screen and (max-width:480px) {
+    .page {
+        padding: 0;
+    }
+ 
+    .sidebar1, .sidebar2 {
+        width: 100%;
+        float: left;
+    }
+    .content {
+        clear: both;
+        width: 100%;
+    }
+}
+ 
+
+
+@media screen and (max-width: 980px) {
+  .hide-for-small { display: none !important; }   /* hide it elsewhere */
+  .navigation img {width:60px;}
+}
+
+@media screen and (min-width: 980px) {
+  .hide-for-large { display: none !important; }   /* hide it elsewhere */
+}
+ 
+ /************************************
+Typography (Text, Headers, Sub-Text)
+*************************************/
+ 
+ 
+.text {
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;  
+}
+ 
+.header {
+    width: 100%;
+    color: #000000;
+    font-style: normal;
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+
+/************************************
+Divider Line
+*************************************/
+
+.divider-line {
+	border-bottom: 1px #E1E1E1 solid;
+	/** padding: 2px; **/
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+/** 20161007.1618-C140565-Tim Lagerhausen **/
+/** Divider line for AIN display in PDCR **/
+.divider-line-PDCR {
+	border-bottom: 1px #E1E1E1 solid;
+	padding: 2px;
+	width: 100%;
+	margin-bottom: 15px;
+}
+/**************
+Total Borders
+***************/
+
+.amp-total {
+	border-top: 4px solid;
+    border-bottom: 1px solid;
+}
+/************************************
+Labels
+*************************************/
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 85%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label.green {
+    background-color:#5cb85c;
+}
+
+
+.label.red {
+    background-color: #d9534f;
+}
+
+.label.orange {
+    background-color: #f0ad4e;
+}
+
+.label.blue {
+    background-color: #5bc0de;
+}
+/************************************
+Buttons
+*************************************/
+ 
+.button{
+    background-color: #4CAF50 !important; /* Green */
+   
+}
+ 
+.button a, .button a:hover {
+    background-color: #4CAF50 !important; /* Green */
+}
+.secondary {
+    background-color: #e7e7e7 !important; /* Gray */
+    color: black; 
+}
+ 
+.dark {
+    background-color: #555555 !important; /* Black */
+}
+ 
+.info {
+    background-color: #008CBA !important; /* Blue */
+}
+ 
+.alert {
+    background-color: #f44336 !important; /* Red */
+}
+
+.search:before {
+  content: "\f002";
+  font-family: FontAwesome;
+}
+ 
+.search-field {
+    font-family: Tahoma, Verdana, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    background-repeat: repeat-x;
+    color: #333333;
+    padding: 1px 2px 1px 3px;
+    margin: 0px !important;
+    overflow-x: hidden;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+ 
+/*******************************
+Alignment
+*******************************/
+ 
+.right {
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+}
+/*******************************
+Default Screen dimensions 980 px = 960 + 20(padding)
+*******************************/
+.page {
+    /*max-width: 1000px;*/
+    background-color: #ffffff;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+ 
+.content .fullwidth {
+    width: 100%;
+    float: left;
+    background-color: #ffffff; 
+    color: #000000;
+    margin:0 .5% .5% 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+ 
+.content .half {
+    width: 50%;
+    float: left;
+    background-color: #ffffff;
+    color: #000000;
+    margin:0 .5% .5% 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+ 
+.content .third {
+    width: 33%;
+    float: left;
+    background-color: #ffffff;
+    color: #000000;
+    margin:0 .5% .5% 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+ 
+.content {
+    width: 65%;
+    float: left;
+    background-color: #ffffff;
+    color: #000000;
+    margin:0 .5% .5% 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+ 
+.innerContent{
+        display: none;
+}
+ 
+.sidebar1, .sidebar2 {
+    float: left;
+    width:17%;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+ 
+.sidebar1{
+    margin-right:.5%;
+}
+ 
+.header .headerblock,
+.footer .footerBlock{
+   padding: 1%;
+}
+ 
+.content .contentBlock{
+  padding: 2%;   
+}
+ 
+.sidebar1 .sbarBlock,
+.sidebar2 .sbarBlock{
+   padding: 3%; 
+}
+ 
+.headerot, .contentot, .sidebarot, .footerot {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+/********
+ NAV
+********/
+ 
+.navigation {
+    overflow:hidden;
+    width: 100%;
+    background: #0E1A2B;
+}
+.navigation ul {
+    background: #2f3e52; 
+        list-style: none; 
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        color: rgb(51, 51, 51);
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        margin-left: -40px;
+         
+}
+.navigation li {
+    display: inline-block;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align:center;
+}
+.navigation a {
+    padding: 15px !important; 
+        color: rgb(255, 255, 255); 
+        font-weight: bold; 
+        text-decoration: none; 
+        display: block;
+        font-size: .9rem;
+        font-weight: normal;
+        font-style: normal;
+}
+ 
+.navigation img {
+   
+     width:250px;
+     
+}
+ 
+.navigation a:hover {
+    background: #0E1A2B;
+         
+}
+ 
+.navigation .text {
+    padding: 10px !important; 
+        color: rgb(255, 255, 255); 
+        font-weight: bold; 
+        text-decoration: none; 
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        font-style: normal;
+}
+ 
+ /***********
+ Top Links
+ ***********/
+ .topnav {
+    overflow:hidden;
+    width: 100%;
+    background: #0E1A2B;
+}
+.topnav ul {
+    background: #0E1A2B; 
+        list-style: none; 
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        color: rgb(51, 51, 51);
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        margin-left: -40px;
+         
+}
+.topnav li {
+    display: inline-block;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align:center;
+}
+.topnav a, .topnav a:hover:visited {
+        padding-top: 36px !important;
+        color: rgb(255, 255, 255); 
+        font-weight: bold; 
+        text-decoration: none; 
+        display: block;
+        font-size: 1.0rem;
+        font-weight: normal;
+        font-style: normal;
+        margin-left: 20px;
+		margin-right: 10px;
+}
+ 
+.topnav img {
+    width:20px;
+    padding: 20px;
+     
+}
+ 
+.navigation .text {
+    padding: 10px !important; 
+        color: rgb(255, 255, 255); 
+        font-weight: bold; 
+        text-decoration: none; 
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        font-style: normal;
+}
+
+af|panelList li a:hover:visited {
+    color:#FFFFFF;
+}
+af|panelList li a:visited {
+    color:#FFFFFF;
+}
+
+af|panelList li a:active {
+    color:#FFFFFF;
+}
+
+/********
+SUB-NAV
+********/
+ 
+.sub-navigation {
+    overflow:auto;
+    width: 100%;
+    background: #2f3e52;
+    -webkit-scrollbar: width: 0 !important;
+    -ms-overflow-style: none;   
+}
+ 
+.sub-navigation ul {
+        background: #2f3e52; 
+        list-style: none; 
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        color: rgb(51, 51, 51);
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        margin-left: -40px;
+         
+}
+.sub-navigation li {
+    display: inline-block;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align:center;
+}
+
+.sub-navigation a, .sub-navigation a:active {
+        background: #2f3e52; 
+        color: rgb(255, 255, 255);
+        text-decoration: none; 
+        display: block;
+        font-size: .9rem;
+        font-weight: normal;
+        padding: 10px; 
+}
+
+
+.sub-navigation a:hover {
+    background: #434e5d;
+         
+}
+/********
+FOOTER
+********/
+ 
+ 
+.footer {
+    width: 100%;
+    clear: both;
+    color: #CCD0D2;
+    background-color: #0E1A2B;
+    text-align: center;
+    font-size: .6rem;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    height: 50px !important;
+    position: relative !important;
+    z-index:1;
+}
+
+
+
+.footer a{
+        padding: 10px; 
+        color: rgb(255, 255, 255); 
+        font-weight: bold; 
+        text-decoration: none; 
+        display: block;
+        font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        font-size: .8rem !important;
+        font-weight: normal;
+        font-style: normal;
+        padding: 15px px;
+        display: inline-block;
+        margin-left:35px;
+    }
+ 
+ 
+.footer ul{
+  
+    clear: both;
+    color: #CCD0D2;
+    background-color: #0E1A2B;
+    text-align: center;
+    font-size: .6rem;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    height: 50px !important;
+    position: relative !important;
+    padding: 25px;
+    margin-left: -32px;
+
+}
+
+.footer li {
+    display: inline-block;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-align:center;
+        list-style: none ;
+}
+
+/********
+HERO
+********/
+
+.hero {
+
+background-size: cover;
+/** NG **/
+overflow-y: hidden;
+min-height:555px;
+
+}
+ 
+.hero .intro {
+    padding: 3rem;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); }
+ 
+.hero h1 {
+    color: #000;
+    font-size: 1.5rem;
+    line-height: 1em;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    text-align: center;
+    padding-top: 2em; 
+}
+ 
+  .hero p {
+    color: #000;
+    font-weight: 200;
+    text-align: center;
+    font-size: 12px;
+}
+ 
+  .hero .tech-img {
+    background: url(../img/la-county-seal.png) no-repeat center center;
+    background-size: cover;
+    height: 9rem;
+    width: 9rem;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;     
+}
+ 
+  @media only screen and (min-width: 30.063em) {
+ 
+ .hero .tech-img {
+    height: 18rem;
+    width: 18rem; 
+}
+ 
+ .hero h1 {
+    padding-top: 4rem;
+    text-align: right;
+    font-size: 2.3rem; 
+}
+ 
+ .hero p {
+   text-align: right; 
+   } 
+}
+
+
+.portalContent{
+
+    width: 100%;
+    float: left;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0 .5% 0 0;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.2;
+    font-size: .8rem;
+}
+
+
+.portalFooter {
+    width: 100%;
+    clear: both;
+    color: white;
+    background-color: #0E1A2B;
+    text-align: center;
+    font-size: .6rem;
+    font-weight: normal;
+    font-style: normal;
+    height: 75px !important;
+    position: relative !important;
+}
+
+/********/
+SLIDESHOW
+/********/
+
+.slideshow {
+  list-style: none;
+  z-index: 1;
+}
+
+.slideshow li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: transparent;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: none;
+  opacity: 0;
+  z-index: -999999;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-animation: imageAnimation 24s linear infinite 0s;
+  -moz-animation: imageAnimation 24s linear infinite 0s;
+  animation: imageAnimation 24s linear infinite 0s;
+}
+
+.slideshow li .caption {
+  position: absolute;
+  text-align: left;
+  z-index: 2;
+  bottom: 700px;
+  padding: 15px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  font-size: 2em;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  color: #fff;
+  -webkit-animation: titleAnimation 24s linear 1 0s;
+  -moz-animation: titleAnimation 24s linear 1 0s;
+  animation: titleAnimation 24s linear 1 0s;
+  font-weight: 100;
+}
+@media only screen and (min-width: 768px) {
+
+.slideshow li h3 {
+  bottom: 30px;
+  font-size: 2em;
+}
+}
+@media only screen and (min-width: 1024px) {
+
+.slideshow li h3 { font-size: 2em; }
+}
+
+.slideshow li:nth-child(1)  { background-image: url("/webcenter/adf/webcenter/webcenter_icon.png") }
+
+.slideshow li:nth-child(2)  {
+  background-image: url("/webcenter/adf/webcenter/home_ena.png");
+  -webkit-animation-delay: 6s;
+  -moz-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.slideshow li:nth-child(3)  {
+  background-image: url("/webcenter/adf/webcenter/configure_ena.png");
+  -webkit-animation-delay: 12s;
+  -moz-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.slideshow li:nth-child(4)  {
+  background-image: url("/webcenter/adf/webcenter/configure_ena.png");
+  -webkit-animation-delay: 18s;
+  -moz-animation-delay: 18s;
+  animation-delay: 18s;
+}
+ @-webkit-keyframes 
+imageAnimation {  0% {
+ opacity: 0;
+ -webkit-animation-timing-function: ease-in;
+}
+ 12.5% {
+ opacity: 1;
+ -webkit-animation-timing-function: ease-out;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+@-moz-keyframes 
+imageAnimation {  0% {
+ opacity: 0;
+ -moz-animation-timing-function: ease-in;
+}
+ 12.5% {
+ opacity: 1;
+ -moz-animation-timing-function: ease-out;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+@keyframes 
+imageAnimation {  0% {
+ opacity: 0;
+ -webkit-animation-timing-function: ease-in;
+ -moz-animation-timing-function: ease-in;
+ animation-timing-function: ease-in;
+}
+ 12.5% {
+ opacity: 1;
+ -webkit-animation-timing-function: ease-out;
+ -moz-animation-timing-function: ease-out;
+ animation-timing-function: ease-out;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+@-webkit-keyframes 
+titleAnimation {  0% {
+ opacity: 0;
+}
+ 12.5% {
+ opacity: 1;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+@-moz-keyframes 
+titleAnimation {  0% {
+ opacity: 0;
+}
+ 12.5% {
+ opacity: 1;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+@keyframes 
+titleAnimation {  0% {
+ opacity: 0;
+}
+ 12.5% {
+ opacity: 1;
+}
+ 25% {
+ opacity: 1;
+}
+ 37.5% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 0;
+}
+}
+
+.no-cssanimations .slideshow li { opacity: 1; }
+
+/*************
+AMP TEXT
+**************/
+
+.amp-ain {
+   font-size: 27px;
+   font-weight: 500;
+}
+
+.amp-ain-text {
+   font-size: 16px;
+   font-weight: normal;
+}
+
+.amp-ain-text-bold {
+   font-size: 16px;
+   font-weight:800;
+}
+
+.amp-d2 {
+  font-weight: 800;
+}
+
+.amp-sub-title {
+    font-size: 16px;
+    color: #003D5B;
+    font-weight: 400;
+}
+.amp-word-wrap {
+    width: 225px !important;
+    word-wrap: break-word; 
+}
+
+
+/*************
+AMP TABS
+**************/
+
+af|panelTabbed::tab-content {
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffffff; 
+    padding: 0px 8px 0px 8px; 
+    font-size: small; 
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+    border-left-width: 0px; 
+    border-right-width: 0px; 
+    border-top-width: 0px; 
+    border-bottom-width: 0px; 
+    border: none;
+    line-height: 16px;
+}
+
+af|panelTabbed{
+    width:100%;
+}
+
+af|panelTabbed::header {
+    padding-bottom: 0px;
+    border-top: 0px solid #BCC7D2;
+}
+
+af|panelTabbed::tab:selected {
+background-color: transparent;
+border-top: 0px;
+}
+
+af|panelTabbed::tab-text-link {
+    color: #000000; 
+    font-size: 13px; 
+    font-weight: 400; 
+    border: none;
+    outline: none;
+    text-decoration:none;
+}
+
+af|panelTabbed::tab:selected af|panelTabbed_tab-text-link {
+    color: #1466b2;
+    font-size: small;
+}
+
+af|panelTabbed::tab-text-link:hover{
+    text-decoration:none;
+}
+
+af|panelTabbed::tab af|panelTabbed::tab-text-link {
+    padding: 3px 0px 3px 0px;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+af|panelTabbed::tab:selected af|panelTabbed::tab-content {
+    border: none;
+    padding-bottom: 0px;
+    border-top: 0px solid #BCC7D2;
+    color: #000000;
+    border: none;
+    padding-bottom: 0px;
+    border-top: 0px solid #BCC7D2;
+    border-bottom: 1px solid #1466b2;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+af|panelTabbed_tab.p_AFSelected af|panelTabbed_tab-content {
+   background-color: rgba(255, 255, 255, 0);
+}
+
+af|panelTabbed::header af|panelTabbed::tab.p|AFSelected af|panelTabbed::tab-content {
+    padding-bottom: 0px;
+    border-top: 0px solid #BCC7D2;
+}
+
+af|panelTabbed::body {
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    color: #333333;
+    overflow: hidden;
+    border-left: 1px solid #CFD8E3;
+    border-right: 1px solid #CFD8E3;
+    border-top: 1px solid #BCC7D2;
+    border-bottom: 1px solid #BCC7D2;
+    margin-top: 7px;
+    padding: 0px;
+    background-color: rgba(0, 0, 255, 0);
+    border-radius: 0px;
+    border-width: 0px;
+}
+
+
+/*************
+AMP BUTTONS
+**************/
+
+af|commandLink {
+    font-size: 13px;
+}
+
+af|goButton {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #1466b2;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+af|goButton.p_AFTextOnly {
+    text-decoration: none;
+    white-space: nowrap;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    background-color: #1466b2;
+    padding-left: 9px;
+    padding-right: 9px;
+  
+}
+
+af|goButton:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #FFE4A8;
+
+}
+
+af|goButton:active {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;
+
+}
+
+@agent (touchScreen:none) {
+
+  af|goButton:active:disabled:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap; 
+  }
+
+  af|goButton:text-only:disabled:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;  
+  }
+
+  af|goButton:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;  
+  }
+
+  af|goButton:focus:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap; 
+  }
+
+af|goButton:active:hover:focus {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;  
+
+  }
+
+af|goButton:active:hover {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    text-decoration: none;
+    white-space: nowrap;  
+  }
+}
+
+.AFButtonGradientEndDisabledColor:alias {
+    color: #F4F4F4; 
+}
+
+.AFButtonBorderDisabledColor:alias {
+    color: #D5D5D5; 
+}
+
+.AFButtonBorder:alias {
+    border-radius: 0px; 
+    border-width: 0px; 
+}
+
+.AFButtonBorderDisabled:alias {
+    border-style: none; 
+    border-width: 0px; 
+}
+
+.AFButtonBorderActive:alias {
+    border-width: 0px; 
+}
+
+.AFButtonBorderHover:alias {
+    border-width: 0px; 
+}
+
+button:focus {outline:0;}
+
+.AFButtonGradientStartColor:alias {
+    color: #1466b2; 
+}
+
+.AFButtonBorderBottomColor:alias {
+    color: #547595; 
+}
+
+.AFButtonBorderColor:alias {
+    color: #547595; 
+}
+
+
+.AFButtonGradientStartActiveColor:alias {
+    color: #E7E7E7; 
+}
+
+.AFButtonBorderTopActiveColor:alias {
+    color: #A3B9C8; 
+}
+
+.AFButtonBorderActiveColor:alias {
+    color: #A3B9C8; 
+}
+
+.AFButtonGradientEndHoverColor:alias {
+    color: #FFE4A8; 
+}
+
+.AFButtonBorderBottomHoverColor:alias {
+    color: #E2CB9B; 
+}
+
+.AFButtonForeground:alias {
+    color: White; 
+}
+
+.AFButtonGradientEndActiveColor:alias {
+    color: #E7E7E7; 
+}
+
+.AFButtonGradientEndColor:alias {
+    color: #1466b2; 
+}
+/*************
+AMP OUTPUT TEXT
+**************/
+
+.amp-summary {
+    font-size:12px;
+}
+
+
+/*************
+AMP INPUT TEXT
+**************/
+
+af|inputText::content {
+    font-weight: normal;
+    background-color: #ffffff;
+    padding: 2px 2px 2px 2px;
+    width: 290px;
+    color: #333333;
+    border: 1px solid #DEE4E7;
+    margin: 0px;
+    border-radius: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: none;
+    font-size: 12px;
+}
+
+.amp-search {
+    width: 450px;
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #DEE4E7;
+    padding: 10px 4px 10px 4px;
+}
+
+
+/*************
+AMP CHECKBOX
+**************/
+
+af|selectBooleanCheckbox_item-text {
+    margin: 0px 1px;
+    vertical-align: 0%;
+}
+
+.amp-search-header af|selectBooleanCheckbox_item-text {
+    margin: 0px 1px;
+    vertical-align: 0%;
+    color: #ffffff !important;
+}
+
+/** 20161026.2045-C140565-Tim Lagerhausen **/
+/** Added styles for the Search conditions selectOneRadio **/
+.amp-search-radio-header af|selectOneRadio_item-text {
+    margin: 0px 1px;
+    vertical-align: 0%;
+    color: #ffffff !important;
+}
+
+
+af|selectManyCheckbox_item-text {
+    margin: 0px 1px;
+    vertical-align: 0%;
+}
+
+/*************
+AMP ACCORDION
+**************/
+
+.AFAccordionHeaderGradientEndColor:alias {
+    color: #E6ECF3; 
+}
+
+af|panelAccordion::header, af|panelAccordion::header-subsequent, af|panelAccordion::body-content {
+    border-bottom-width: 0px; 
+    border-left-width: 0px; 
+    border-right-width: 0px; 
+}
+
+
+af|panelAccordion::header {
+    border-top-width: 0px; 
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px;
+    background-image: -webkit-linear-gradient(top, #f0f4fa 0%, #f0f4fa 100%);
+}
+
+
+
+
+/********************
+AMP SHOW DETAIL FRAME
+********************/
+
+af|showDetailFrame::header-text {
+    background-color: #eeeeee; 
+    color: #044771; 
+    padding: 7px 7px 7px 7px; 
+    font-size: 14px; 
+    font-weight: lighter; 
+    margin: 0px 0px 0px 0px; 
+}
+
+af|showDetailFrame::actionmenu-icon-style {
+
+  background-size: 16px;
+}
+
+af|showDetailFrame::actionmenu-icon-style:hover {
+
+  background-size: 16px;
+}
+
+af|showDetailFrame::actionmenu-icon-style:active {
+
+  background-size: 16px;
+}
+
+
+af|showDetailFrame::undisclosed-icon:rtl {
+    padding: 7px 7px 7px 7px; 
+}
+
+af|showDetailFrame::disclosure-link {
+    background-color: #eeeeee;
+    outline: none;
+}
+
+af|showDetailFrame::header-center {
+  background-color: #eeeeee;
+}
+
+af|showDetailFrame_content {
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    overflow: auto;
+    padding: 0px;
+	
+}
+
+af|showDetailFrame_content.p_AFMedium {
+    border-color: #F0F4FC;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+}
+
+af|showDetailFrame::disclose-icon-style {
+
+    height: 12px; 
+    width: 12px;; 
+    padding: 7px 7px 7px 7px;
+    margin: 0px 0px 0px 0px; 
+    background-color: #eeeeee;
+    background-size: 16px;
+}
+
+af|showDetailFrame::collapse-icon-style {
+    height: 12px; 
+    width: 12px; 
+    padding: 7px 7px 7px 7px; 
+    margin: 0px 0px 0px 0px; 
+    background-color: #eeeeee;
+
+    background-size: 16px;
+}
+
+af|showDetailFrame::collapse-icon-style:hover{
+
+    background-size: 16px;
+}
+
+af|showDetailFrame::collapse-icon-style:active{
+
+  background-size: 16px;
+}
+
+af|showDetailFrame::disclose-icon-style:hover{
+
+  background-size: 16px;
+}
+
+af|showDetailFrame::disclose-icon-style:active{
+
+  background-size: 16px;
+}
+
+af|showDetailFrame::header.p_AFMedium {
+  border-top: 0px solid #BFC6C9;
+  border-bottom: 0px solid #CCD1D4;
+}
+
+.PEShowDetailFrameAnimIcon {
+
+    background-size: 12px;
+    width: 20px;
+}
+
+af|showDetailHeader::title-text0, af|query::title-text0 {
+    font-weight: lighter; 
+    font-size: large; 
+}
+/*********************
+AMP SHOW DETAIL HEADER
+**********************/
+
+af|showDetailHeader::title1 {
+    background-color: #eeeeee; 
+    padding: 7px 7px 7px 7px;
+    margin: 0px 0px 0px 0px;
+	
+}
+
+af|showDetailHeader_title-text1 {
+	font-weight: bold !important;  
+	font-size: 14px;
+}
+
+af|showDetailHeader_undisclosed-icon-style {
+
+    height: 12px; 
+    width: 12px;; 
+    padding: 7px 7px 7px 7px;
+    margin: 0px 0px 0px 0px; 
+    background-color: #eeeeee;
+    background-size: 16px;
+    
+}
+
+
+af|showDetailHeader_undisclosed-icon-style:hover {
+
+    background-size: 16px;
+}
+
+af|showDetailHeader_disclosed-icon-style {
+
+    height: 12px; 
+    width: 12px;; 
+    padding: 7px 7px 7px 7px;
+    margin: 0px 0px 0px 0px; 
+    background-color: #eeeeee;
+    background-size: 16px;
+    
+}
+
+af|showDetailHeader_disclosed-icon-style:hover {
+
+af|panelBox::content     background-size: 16px;
+}
+
+/***************
+AMP PANEL HEADER
+****************/
+af|showDetailHeader::title-text0, af|query::title-text0 {
+    font-weight: lighter; 
+    font-size: large; 
+}
+
+af|panelHeader::title0, af|showDetailHeader::title0, af|query::title0 {
+    padding: 0px;
+    
+
+}
+
+af|panelHeader::title-text1, af|showDetailHeader::title-text1, af|query::title-text1 {
+    font-weight: lighter;
+    padding: 7px 7px 7px 7px;
+    font-size:14px;
+}
+
+af|panelHeader::title-text1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*************
+AMP PANEL BOX
+**************/
+
+af|panelBox {
+  border: 0px solid #D6DFE6;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  background-color: #f2f2f2 !important; 
+}
+
+.amp-roll-table-header af|panelBox_table {
+  padding: 0px 0px 0px 0px;
+  background-color: #f2f2f2 !important; 
+}
+
+af|panelBox_header-element {
+    background-color: #eeeeee; 
+    color: #044771; 
+    padding: 7px 7px 7px 7px; 
+    font-size: 14px; 
+    margin: 0px 0px 0px -5px; 
+    font-variant: normal;
+}
+
+.amp-roll-details af|panelBox_header-element {
+    background-color: #1da7ff;
+    color: #ffffff;
+    padding: 4px 7px 4px 7px;
+    font-size: 12px;
+    margin: 0px 0px 0px -5px;
+    font-variant: normal;
+}
+
+.amp-roll-details-nc af|panelBox_header-element {
+    background-color: #474747;
+    color: #ffffff;
+    padding: 4px 7px 4px 7px;
+    font-size: 12px;
+    margin: 0px 0px 0px -5px;
+    font-variant: normal;
+}
+
+.amp-roll-table-header af|panelBox_table {
+  padding: 0px 0px 0px 0px;
+}
+
+
+af|panelBox_undisclosed-icon-style {
+    width: 13px;
+    height: 17px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: default;
+
+    background-color: #eeeeee;
+    padding: 7px;
+    background-size: 16px;
+    
+}
+
+af|panelBox_undisclosed-icon-style:hover {
+
+    background-size: 16px;
+    
+}
+
+af|panelBox_disclosed-icon-style {
+    width: 13px;
+    height: 17px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: default;
+
+    background-color: #eeeeee;
+    padding: 7px;
+    background-size: 16px;
+    
+}
+
+af|panelBox_disclosed-icon-style:hover {
+
+    background-size: 16px;
+    
+}
+
+
+af|panelBox_undisclosed-icon-style:active {
+
+    background-size: 16px;
+    
+}
+
+
+
+af|panelBox_disclosed-icon-style:active {
+
+    background-size: 16px;
+    
+}
+
+/*************
+AMP SELECT MANY
+*************
+
+af|selectManyChoice::content:focus {
+    background-color: #FFFFFF;
+    border-radius: 0px !important;
+    border: 1px solid #DEE4E7;
+    
+}
+
+
+af|selectManyChoice::dropdown {
+    background-image: none;
+    border-top: 1px solid #b7b7b7;
+    border-right: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+    border-left: 1px solid #b7b7b7;
+    border-width: 0px;
+    margin-left: -20px;
+}
+
+af|selectManyChoice::control {
+    border-color: #DEE4E7;
+    border-radius: 0px;
+    border-width: 0px;
+    margin: 0px;    
+}
+
+af|selectManyChoice_dropdown-icon-style:hover {
+    background-image: -moz-linear-gradient(top, RGBA(69, 160, 73, 0) 0%, RGBA(69, 160, 73, 0) 100%);
+}
+
+af|selectManyChoice_dropdown-icon-style:active {
+    background-image: -moz-linear-gradient(top, RGBA(69, 160, 73, 0) 0%, RGBA(69, 160, 73, 0) 100%);
+}
+
+af|selectManyChoice_dropdown:hover{
+   background-image: -moz-linear-gradient(top, RGBA(69, 160, 73, 0) 0%, RGBA(69, 160, 73, 0) 100%);
+}
+
+af|selectManyChoice_dropdown:active {
+    background-image: -moz-linear-gradient(top, RGBA(69, 160, 73, 0) 0%, RGBA(69, 160, 73, 0) 100%);
+}
+
+
+af|selectManyChoice_label {
+    font-weight: 800;
+    padding-right: 5px;
+    border: solid;
+    border-width: 1px;
+    border-color: #ffc649;
+    background-color: #ffc649;
+    color: #ffffff;
+}
+
+af|selectManyChoice_item.p_AFHighlighted {
+    border: 0px dotted #003286;
+}
+
+
+af|selectManyChoice_item.p_AFSelected {
+    background-color: #f0f7ff;
+}
+
+af|selectManyChoice::content {
+    width: 300px;
+    border: 1px solid #DEE4E7;
+    background-color: #FFFFFF;
+    border-radius: 0px !important;
+    
+}
+
+*/
+
+/*************
+AMP TABLES
+**************/
+
+af|column::column-header-cell, af|column::column-header-cell:focus {
+    background-color: #194e95; 
+    color: #ffffff;
+    font-size: 13px;
+    height:30px;
+    font-weight: bold;
+    padding:2px; 
+}
+
+af|table af|table::data-table-VH-lines af|column::data-cell {
+    border-right: 0px solid #B6BDC6;
+    border-bottom: 0px solid #B6BDC6;
+    padding-right:0px;
+    padding-left:0px;
+}
+
+af|table af|table::data-table-VH-lines af|column::banded-data-cell {
+    border-right: 0px solid #B6BDC6;
+    border-bottom: 0px solid #B6BDC6;
+    padding-right:0px;
+    padding-left:0px;
+}
+
+af|column::banded-data-cell {
+    background-color: #f2f2f2;
+    font-size: 13px;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+
+af|column_data-cell {
+    font-size: 13px;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+
+af|table_undisclosed-icon-style{
+
+    background-size: 11px;
+    height: 12px;
+
+}
+
+af|table_disclosed-icon-style {
+
+     background-size: 11px;
+     height: 12px;
+
+}
+
+af|table_data-row.p_AFSelected af|column_detail-cell {
+    background-color: #f0f4fa;
+}
+
+af|column_detail-cell{
+  border-right: 1px solid #B6BDC6;
+  border-bottom: 1px solid #B6BDC6;
+}
+
+af|goLink {
+    font-size: 13px;
+}
+
+af|column::data-cell af|inputText.p_AFReadOnly af|inputText::content {
+    font-size:13px;
+}
+
+af|column::banded-data-cell af|inputText.p_AFReadOnly af|inputText::content {
+    font-size:13px;
+}
+
+af|table_detail-area-cell {
+    background-color: #F2F2F2;
+}
+
+/*.AFHoverSecondaryColor:alias {
+    color: #E7E7E7; 
+}*/
+
+/*************
+AMP ICONS
+**************/
+
+af|panelCollection::maximize-icon,
+af|panelCollection::maximize-depressed-icon, 
+af|panelCollection::maximize-hover-icon, 
+af|panelCollection::maximize-disabled-icon {
+
+}
+
+
+/**
+af|panelCollection::qbe-icon {
+
+}
+**/
+
+af|panelCollection::qbe-icon,
+af|panelCollection::qbe-depressed-icon,
+af|panelCollection::qbe-hover-icon,
+af|panelCollection::qbe-depressed-icon:hover,
+af|panelCollection  af|toolbar af|commandToolbarButton:selected,
+af|panelCollection  af|toolbar af|commandToolbarButton:selected:depressed, 
+af|panelCollection  af|toolbar af|commandToolbarButton:depressed,
+af|panelCollection  af|toolbar af|commandToolbarButton:selected:depressed:hover,
+af|panelCollection  af|toolbar af|commandToolbarButton:selected:hover, 
+af|panelCollection  af|toolbar af|commandToolbarButton:depressed:hover,
+af|panelCollection  af|toolbar af|commandToolbarButton:active:hover
+{
+    background-color:transparent;
+
+}
+.icon img {
+    width: 20px;
+    padding: 4px;
+}
+
+
+/**
+.AFFatalIcon:alias {
+
+}
+
+.AFErrorIcon:alias {
+
+}
+
+.AFWarningIcon:alias {
+    content: url(statusIconWarning/warning-icon.png); 
+}
+
+.AFInfoIcon:alias {
+    content: url(statusIconInfo/info-icon.png); 
+}
+
+.AFConfirmationIcon:alias {
+    content: url(statusIconConfirmation/confirmation-icon.png); 
+}
+
+.AFChangedIcon:alias {
+    content: url(statusIconChanged/changed-icon.png); 
+}
+
+**/
+
+af|column::row-header-cell:info {
+    background-image: url(iconColumnRowHeaderCellInfo/info-icon.png); 
+}
+
+af|column::row-header-cell:error, af|column::row-header-cell:fatal {
+    background-image: url(iconColumnRowHeaderCellError/error-icon.png); 
+}
+
+af|column::row-header-cell:confirmation {
+    background-image: url(iconColumnRowHeaderCellConfirmation/confirmation-icon.png); 
+}
+
+af|column::row-header-cell:warning {
+    background-image: url(iconColumnRowHeaderCellWarning/warning-icon.png); 
+}
+
+af|inputText::changed-icon {
+    width: 12px; 
+    height: 12px; 
+}
+
+af|inputDate::launch-icon-style, af|panelList af|inputDate::launch-icon-style {
+
+    background-size: 16px;
+}
+
+@agent (touchScreen:none) {
+
+    af|inputDate::launch-icon-style:disabled:hover {
+
+        background-size: 16px;
+    }
+
+}
+
+af|inputDate::launch-icon-style:active {
+
+    background-size: 16px;
+}
+
+@agent (touchScreen:none) {
+
+    af|inputDate::launch-icon-style:hover {
+
+        background-size: 16px;
+    }
+
+}
+
+.amp-smry-icon {
+   width: 40px;
+   height: 40px
+}
+
+.amp-redfin {
+  width: 80px;
+  height: 80px;
+}
+
+af|inputListOfValues::search-icon-style:active {
+    background-image: url(iconLOVSearchActive/search-icon-toolbar.png);
+    background-size: 16px;
+}
+
+af|inputListOfValues::search-icon-style:hover {
+    background-image: url(iconLOVSearchHover/search-icon-toolbar.png);
+    background-size: 16px;
+}
+
+
+/*************
+AMP SEARCH
+**************/
+
+.icon-search {
+    background-size: 20px;
+    background-repeat: no-repeat !important;
+    padding: 20px !important;
+
+    background-position: center; 
+    background-color: #547595 !important;
+}
+
+
+.amp-search-tab {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.amp-search-region {
+  margin-right: auto;
+  width: 540px;
+  margin-left: auto;
+  background-color: rgba(255, 255, 255, .95);
+  padding: 30px;
+  border-radius:3px;
+}
+
+.amp-search-title {
+    font-size: x-large;
+    font-color: #000000;
+    font-weight: 100;
+}
+
+.amp-srch-dpd {
+  height: 40px !important;
+  font-size: 16px !important;
+}
+
+.amp-search-input-topbar {
+  padding: 2px 4px 2px 4px !important;
+}
+
+.amp-icon-search-topbar {
+	background-size: 14px !important;
+    padding: 14px !important;
+}
+
+/** Align Search button for IE **/
+@agent ie {
+
+.icon-search {
+    background-size: 20px;
+    background-repeat: no-repeat !important;
+    padding: 20px !important;
+
+    background-position: center; 
+    background-color: #547595 !important;
+    margin-top: 2px !important;
+
+}
+.amp-icon-search-topbar {
+	background-size: 14px !important;
+    padding: 14px !important;
+    margin-top: 3px !important;
+}
+
+}
+
+
+/*************
+AMP DIALOG
+**************/
+
+af|selectManyShuttle::changed-icon {
+    height: 12px; 
+    width: 12px; 
+}
+
+af|selectManyShuttle::header {
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; 
+}
+
+af|selectOrderShuttle::header {
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; 
+}
+
+af|selectManyShuttle::description {
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; 
+    font-size: small; 
+}
+
+af|selectOrderShuttle::description {
+    font-size: small; 
+}
+
+/***
+
+af|selectOrderShuttle::move-horizontal-icon-style {
+    background-image: url("../img/shuttle-right.png"); 
+}
+
+**/
+
+
+af|selectOneRadio_item-text {
+    vertical-align: 0% !important;
+}
+
+af|dialog_title {
+    margin-top: 4px;
+    cursor: default;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px;
+    
+}
+
+af|dialog {
+    border: solid 0px #8794A3;
+    background-color: #f0f4fa;
+    border-color: #C3D0DF;
+    color: #333333;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    -webkit-border-radius: 0px;
+    -webkit-box-shadow: 5px 5px 5px rgba(41, 41, 41, 0.2);
+}
+
+af|dialog::footer-button {
+	background-color:#1466b2;
+	margin-right:2px;
+	
+}
+
+
+/******************
+AMP NAVIGATION PANE
+*******************/
+af|navigationPane-list_link.p_AFSelected {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    width: 100%;
+    padding: 5px;
+    border-left: 3px solid #1466b2;
+    margin-left: 0px !important;
+
+}
+
+af|navigationPane-list_link {
+    text-decoration: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: block;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 12px;
+}
+af|column_column-filter-cell {
+    font-weight: normal;
+    font-size: 13px;
+    font-weight: 800;
+    border-right: 1px solid #d6dfe6;
+    border-bottom: 0px solid #ffffff;
+    border-top-width: 0px;
+    cursor: default;
+    overflow: hidden;
+    background-color: #f0f4fa;
+    height: 100%;
+}
+
+af|menu af|menu_bar-item.p_AFHighlighted.p_AFHoverTarget {
+    color:#333333;    
+    background-color:#EDF2F7;    
+    border-width:0px;
+    background-image:-webkit-linear-gradient(top, #FFE4A8 0%, #FFE4A8 100%);
+    padding: 4px 0px 1px 0px;
+}
+       
+af|menu_bar-item {
+   padding: 3px 0px 1px 0px; 
+}
+
+af|menu::bar-item.p_AFDepressed {
+    border-top: 0px solid #A3B9C8;
+    border-right: 0px solid #A3B9C8;
+    border-bottom: 0px solid #A3B9C8;
+    border-left: 0px solid #A3B9C8;
+}
+
+af|menu::bar-item {
+    border-radius: 0px;
+}
+
+.AFBackgroundColor:alias {
+  /*  color: #f2f2f2; */
+}
+
+.AFGlobalLinkActiveColor:alias {
+    color: #339BD0; 
+}
+
+af|panelAccordion_header-toolbar {
+    background-color: #f0f4fa;
+}
+
+/*************
+AMP PANEL FORM
+**************/
+
+af|panelFormLayout::label-cell {
+    text-align: left;
+}
+
+af|panelHeader::title-text0 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+af|panelFormLayout::label-cell {
+    font-weight: bold; 
+	font-size: 13px;
+	color : black;
+}
+
+/***************
+ALERT BADGE
+****************/
+
+.amp-badge {
+	position: absolute;
+    top: 4px;
+    right: 6px;
+    padding: 1px 7px;
+    border-radius: 100px;
+    background: -webkit-linear-gradient(top, #ff0000 0%,#ff0000 100%);
+    -webkit-background-clip: padding-box;
+    font: bold 11px/18px "Helvetica Neue", sans-serif;
+    color: white;
+    text-decoration: none;
+    /* text-shadow: 0 -1px 0 rgba(0,0,0,.6); */
+	background-color: #ff0000;
+}
+
+.amp-badge-cd {
+      display: inline-block;
+      min-width: 7px;
+      padding: 2px 7px;
+      font-size: 14px;
+      color: #fff;
+      vertical-align: middle;
+      background-color: #5F5F5F;
+      border-radius: 20px;
+      margin: 6px;
+}
+
+/***********************************
+AMP PANEL GROUP MARINE AND AIRCRAFT
+**********************************
+
+.amp-clear-side-scroll af|panelGroupLayout {
+	overflow-x:hidden;	
+}
+
+/************************
+AMP PANEL STRETCH LAYOUT
+************************
+
+af|panelStretchLayout {
+	 width: 100%;
+	 min-height:600px;
+}
+.amp_txt_13 {
+    font-size:13px;
+}
+
+
+/*****************
+AMP LABEL MESSAGE
+*****************/
+af|panelLabelAndMessage_label {
+     font-weight: bold;
+}
+
+af|panelHeader_title-text3 {
+     font-size: 14px;
+     font-weight: 500;
+}
+
+/**************
+AMP DATE INPUT
+**************/
+
+af|inputDate::content {
+    padding: 2px 2px 2px 2px;
+    margin: 0px;
+    font-size: 12px;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+af|inputDate_content {
+    padding: 2px 2px 2px 2px;
+    margin: 0px;
+    font-size: 12px;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+/*****************
+AMP SELECT CHOICE
+*****************/
+
+af|selectOneChoice_content {
+       background-color: #ffffff;
+    font-size: 12px;
+}
+
+/** 20161010.1457-C140565-Tim Lagerhausen **/
+/** Added margins for the PDCR selectOneRadio items **/
+.selectPDCRRadio label {
+   margin-right: 15px !important;
+}
+
+/** 20161026.1837-C140565-Tim Lagerhausen **/
+/** Added margins for the Search conditions selectOneRadio 
+Defect 18136 **/
+.selectSearchRadio label {
+   margin-right: 30px !important;
+}
+
+/***************
+AMP DATE SELECT
+***************/
+
+af|chooseDate {
+  border-width: 0px;
+}
+
+.AFPopupSelector {
+    border-color: #eeeeee;
+}
+
+af|chooseDate::week-header-row {
+    background-color: #ffffff;
+}
+
+af|chooseDate::prev-month-day {
+    color: #d5d5d5;
+    font-size: 12px;
+}
+
+af|chooseDate::regular-day {
+    font-size: 12px;
+    line-height: 2;
+}
+
+af|chooseDate::regular-day:hover {
+    font-size: 12px;
+    line-height: 2;
+    color:#596A94;
+}
+
+af|chooseDate_regular-day:hover {
+    background-color: #d5d5d5;
+}
+
+af|chooseDate::today.p_AFSelected {
+    background-color: #d5d5d5;
+    font-size: 12px;
+    border-radius: 0px;
+}
+
+af|chooseDate::today {
+    border: 0px solid #B3C6DB;
+}
+
+af|chooseDate::today.p_AFSelected:hover {
+    border: 0px solid #B3C6DB;
+    padding-bottom:0px !important;
+    padding:0px;
+}
+
+af|chooseDate::next-month-day {
+    color: #d5d5d5;
+    background-color: #FFFFFF;
+    font-size: 12px;
+}
+/*******************
+AMP Sticky Header
+*******************/
+
+.AFLabelText, .af_outputLabel, .af_inputChoice_label, .af_inputFile_label, .af_inputNumberSpinbox_label, .af_inputText_label, .af_selectBooleanCheckbox_label, .af_selectBooleanRadio_label, .af_inputColor_label, .af_inputDate_label, .af_inputListOfValues_label, .af_selectManyCheckbox_label, .af_selectManyListbox_label, .af_selectOneChoice_label, .af_selectOneListbox_label, .af_selectOneRadio_label, .af_panelLabelAndMessage_label, .portlet-form-label, .portlet-icon-label, .portlet-dlg-icon-label, .portlet-form-field-label, .af_richTextEditor_label, .af_codeEditor_label, .af_selectManyShuttle_label, .af_selectOrderShuttle_label, .af_selectManyChoice_label, .af_inputComboboxListOfValues_label, .af_quickQuery_label, .af_inputNumberSlider_label, .af_inputRangeSlider_label {
+	font-size: 15px;
+}
+
+.amp-sticky-header {
+  border-bottom: 1px solid rgb(239, 239, 239);
+  box-shadow: 0px 1px 0px rgb(239, 239, 239);
+  z-index: 999999;
+  background-color: rgb(255, 255, 255);
+}
+
+.amp-sticky-header label{
+	font-size: 15px !important;
+}
+
+.amp-sticky-img af|commandImageLink::image {
+  width: 30px;
+}
+
+.amp-sticky-img af|goImageLink::image {
+  width: 30px;
+  min-height: 30px;
+}
+
+.ain-sticky {
+  z-index:99;
+  top:120px!important; 
+  background-color:white;
+  /** Update height 50px to 60px 10/16/2016 **/
+  height:60px!important;
+  position:fixed!important;
+  padding:5px;
+}
+
+.ain-sticky-print {
+  z-index:99;
+  top:120px!important; 
+  background-color:white;
+  height:60px!important;
+  padding:5px;
+}
+
+/************
+AMP Tool Tip
+************/
+
+.AFNoteWindow {
+  background-color:rgba(0,114,188,1); 
+  color:White;
+  font-size:12px!important;
+}
+
+.AFNoteWindowRight {
+  background-color:rgba(0,114,188,1); 
+  color:White;
+}
+
+af|noteWindow {
+  background-color:rgba(0,114,188,1); 
+  color:White;
+  
+}
+
+.AFNoteWindowHintText, .AFNoteWindowShortDesc {
+  color:FFFFFF; 
+}
+
+af|message_type {
+    color: #ffffff !important;
+}
+
+af|message_detail {
+    color: #ffffff !important;
+}
+/*Notewindow styles above enabled*/
+
+/*************************
+AMP Tabel Print Formatting
+**************************/
+
+.amp-print-view {
+    display: none;
+}
+
+
+/*******************
+AMP POP-UP Selector
+*******************/
+.AFPopupSelector {
+    background-color: #044771;
+    margin-top: 15px;
+    border-color: #044771;
+	font-size: 12px;
+}
+
+.AFPopupSelector af|commandImageLink::text {
+    background-color: #044771;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: left;
+    padding: 15px;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    display: block;
+    line-height: 1;
+    font-style: normal;
+    outline: none;
+}
+.AFPopupSelector af|commandImageLink::text:hover {
+    background-color: #023250;
+    color: #ffffff;
+    outline: none;
+}
+
+/* Added by shawes, 02-Nov-2017, OATS 10576 */
+.AFPopupSelector af|commandImageLink:disabled af|commandImageLink::text{
+  background-color: #044771;
+  color:#c0c0c0;
+  outline: none;
+}
+
+
+.AFPopupSelector af|goImageLink::text {
+    background-color: #044771;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: left;
+    padding: 15px;
+    vertical-align: baseline;
+    text-decoration: none;
+    white-space: nowrap;
+    display: block;
+    line-height: 1;
+    font-style: normal;
+    outline: none;
+}
+
+.AFPopupSelector af|goImageLink::text:hover {
+    background-color: #023250;
+    color: #ffffff;
+    outline: none;
+}
+
+/* Added by shawes, 02-Nov-2017, OATS 10576 */
+.AFPopupSelector af|goImageLink:disabled af|goImageLink::text{
+  background-color: #044771;
+  color:#c0c0c0;
+  outline: none;
+}
+
+/***************
+TAM ANCHOR COLOR
+****************/
+
+.amp-font-white af|commandLink {
+    color:#ffffff !important;
+}
+/******************
+TBV changes for 9/12/2016
+******************/
+
+.amp-tbv-cell-border-right af|panelGroupLayout {
+	border-right-color:#000000; 
+	border-right-style:solid; 
+	border-right-width:thin; 
+	height:25.0px; 
+	width:100.0px;
+	padding-right:3px;
+}
+
+.amp-tbv-cell-no-border af|panelGroupLayout {
+	height:25.0px; 
+	width:100.0px;
+}
+
+.amp-tbv-panel-grid af|panelGridLayout {        
+	border:1px solid #000000;         
+	font-weight:bold; with:400px;  
+}  
+
+.amp-select-one-choice-no-label af|selectOneChoice::label {
+    display:none;
+}
+
+.amp-edit-form af|panelBox::content {
+  background-color: transparent;
+ border-color: #ffffff; 
+}
+
+.amp-edit-form af|panelWindow {
+    background-color: Transparent;
+    border: solid 1px #8794A3; 
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px; 
+    border-color: #C3D0DF; 
+}
+.amp-edit-form af|panelWindow::footer, 
+.amp-edit-form af|panelWindow::footer-end, 
+.amp-edit-form af|panelWindow::footer-start, 
+.amp-edit-form af|panelWindow::header-start, 
+.amp-edit-form af|panelWindow::header-end, 
+.amp-edit-form af|panelWindow::content-start, 
+.amp-edit-form af|panelWindow::content-end {
+    display: none;
+}
+
+.amp-edit-box af|panelBox {
+    border: 1px solid #D6DFE6; 
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+    background-color: transparent;
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+    border-spacing: 0pt 0pt; 
+    border-radius: 0px; 
+    border-style: solid; 
+    border-width: thin;
+}
+
+.amp-edit-box af|panelBox::content {
+    background-color: transparent;
+    border: 1px solid #D6DFE6; 
+    margin: 0px 0px 0px 0px; 
+     padding: 0px 0px 0px 0px; 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+    border-spacing: 0pt 0pt; 
+    border-radius: 0px; 
+    border-style: solid; 
+    border-width: thin;
+}
+
+.amp-edit-disabled-inputtext af|inputText{
+    background-color:#8794A3; 
+    border: 1px solid #D6DFE6;
+}
+
+.amp-edit-box af|panelBox::header-element{
+    display:none;
+}
+
+.amp-edit-box af|panelBox::content:core{
+    background-color: none;
+}
+
+/***************
+NK  Start : Notification Style
+****************/
+
+
+.amp-notification af|showDetail_header-text
+{
+animation: blink-animation 1s steps(5, start) infinite;
+color:RED;
+font-size: 1em;
+font-weight: bold;
+-webkit-animation: blink-animation 1s steps(5, start) infinite;
+
+}
+
+.blink {
+animation: blink-animation 1s steps(5, start) infinite;
+color:RED;
+font-size: 1em;
+font-weight: bold;
+-webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+
+/***************
+NK  END : Notification Style
+****************/
+
+.amp-tbv-panel-label-border100 af|panelLabelAndMessage::label {
+    font-size: 12px;
+    font-weight: bold;
+    border-right-style: solid; 
+    border-right-width: thin; 
+    
+    
+    }
+.amp-tbv-panel-label-border100 af|panelLabelAndMessage::content-cell {
+    font-size: 12px;
+    font-weight: bold;
+    border-right-style: solid; 
+    border-right-width: thin; 
+    
+background-color: Blue;
+    }
+.amp-tbv-panel-label-border100 af|panelLabelAndMessage{
+    font-size: 12px;
+    font-weight: bold;
+    border-right-style: solid; 
+    border-right-width: thin; 
+    width: 200px; 
+    background-color: yellow;
+    }
+
+/***************
+FAQ Page style
+****************/
+
+.amp-faq-container {
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-left: auto;
+    margin-right: auto;
+	font-size: 13px;
+    line-height: 1.42857;
+}
+
+
+.amp-faq-container::after, .amp-faq-container::before {
+    box-sizing: border-box;
+}
+
+.amp-faq-container p {
+    margin: 0 0 9px;
+}
+
+.amp-faq-container b, optgroup, strong {
+    font-weight: 700;
+}
+
+
+.amp-faq-page-header {
+    border-bottom: 1px solid #eee;
+    margin: 36px 0 18px;
+    padding-bottom: 8px;
+}
+
+
+af|panelTabbed::tab-text-link:hover{
+text-decoration: none;
+}
+
+/*************** 10/11/2016
+NG Search Input styles 
+****************/
+
+.amp-search-input-utb {
+	width:420px;
+}
+
+.amp-search-input-utb af|inputText::content {
+height:40px;
+	font-size:16px; 
+	width:410px; 
+	background-color:#ffffff; 
+	color:#333333; 
+	border:1px solid #DEE4E7; 
+	padding: 10px 4px 10px 4px;
+}
+
+.amp-search-inputbox af|inputText::content {
+height:40px; 
+	font-size:16px; 
+	width:450px; 
+	background-color:#ffffff; 
+	color:#333333; 
+	border:1px solid #DEE4E7; 
+	padding: 10px 4px 10px 4px;
+}
+
+.amp-search-nav-inputbox af|inputText::content {
+	font-size:14px; 
+	width:550px; 
+	background-color:#ffffff; 
+	color:#333333; 
+	border:1px solid #DEE4E7; 
+	padding: 5px 4px 5px 4px;
+}
+
+/** 20161026.2114-C140565-Tim Lagerhausen **/
+/** increased height by 10px for new search conditions selectOneRadio **/
+.amp-search-panelTab {
+    height:126px;	
+	background-color:rgba(0,0,0,0);
+}
+
+.amp-search-utb-select-one af|selectOneChoice::content {
+	font-size:16px; 
+	height:40px
+}
+
+.amp-search-nav-utb-select-one af|selectOneChoice::content {
+	font-size:16px; 
+	height:28px;
+	
+}
+
+/** Adjust search input ***/
+@media screen and (max-width:1334px) {
+
+.amp-search-nav-inputbox af|inputText::content {
+	font-size:14px; 
+	width:350px; 
+	background-color:#ffffff; 
+	color:#333333; 
+	border:1px solid #DEE4E7; 
+	padding: 5px 4px 5px 4px;
+}
+
+}
+
+.amp-user-welcome {  
+
+}
+
+@media screen and (max-width:1129px) {
+	.amp-user-welcome { 
+		display: none !important; 
+	}
+}
+
+/***************
+NG  END : Search Input Styles
+
+****************/
+
+/** Defect 6477 Increase font size to match legacy portal**/
+af|panelLabelAndMessage::content-cell.AFPanelFormLayoutContentCell
+{
+	font-size:13px;
+    height:auto;
+}
+
+/* Maps responsive styles **/
+/*
+.resp-maps { 
+	float:left;
+	width:695px;
+	height:800px;
+}
+*/
+
+@media screen and (min-width:1600px) {
+	.resp-maps { 
+		overflow:hidden;
+		height:800px;
+	}
+}
+
+@media screen and (max-width:1599px) {
+	.resp-maps { 
+		float:left;
+		width:90%;
+		height:800px;
+	}
+    .resp-maps::after { 
+        content: "";
+        visibility: hidden;
+        display: block;
+        height: 0;
+        clear: both;
+    }
+
+}
+
+/*** rp-snapshot styles ***/
+/** source: rpSnapshot on gitlab **/
+.rp-snapshot {
+  position: relative !important;
+  width: 1200px !important;
+  top: 0;
+  left: 0;
+  right: auto !important;
+  bottom: auto !important;
+  padding: 0;
+  font-size: 9pt !important;
+  margin:auto;
+}
+@media print {
+  .rp-snapshot {
+    position: absolute !important;
+    width: auto !important;
+    font-size: 7pt !important;
+    margin-top: 40px;
+    margin-left: 15px;
+    margin-right: 20px;
+  }
+}
+.rp-snapshot .rp-snapshot-section {
+  margin-bottom: 5px;
+  page-break-inside: avoid;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h1,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h2,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h3,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h4,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h5,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h6 {
+  margin-top: 6px;
+  margin-bottom: 3px;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h1 > *,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h2 > *,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h3 > *,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h4 > *,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h5 > *,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header h6 > * {
+  margin-right: 4px;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-header:after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  border-bottom: 1px solid #999;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail {
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail > * {
+  margin-bottom: 8px;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table th,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table td {
+  text-align: center;
+  border: 1px solid #a6a6a6;
+  padding: 0 1px;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table thead th,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tfoot th,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table thead td,
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tfoot td {
+  background-color: #cccccc;
+  border: 1px solid #999;
+}
+.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tbody tr:nth-child(even) {
+  background-color: #e5e5e5;
+}
+.rp-snapshot .table-footer span {
+  margin: 0 6px;
+}
+.rp-snapshot .badge {
+  margin: 0 6px;
+  padding: 0 3px;
+  font-size: smaller;
+  border: 1px solid #999;
+  border-radius: 5px;
+  background-color: #cccccc;
+}
+.rp-snapshot .stretch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.rp-snapshot .stretchcenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+.rp-snapshot .def {
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+   flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+   flex-grow: 1;
+  padding-right: 6px;
+}
+
+.rp-snapshot .def .def-detail {
+  display: inline-block;
+  font-weight: normal;
+}
+
+@media print {
+  .rp-snapshot .noprint {
+    display: none !important;
+  }
+  .rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tbody tr:nth-child(even) {
+	background-color: #e5e5e5;
+  }
+  .rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table thead th,
+	.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tfoot th,
+	.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table thead td,
+	.rp-snapshot .rp-snapshot-section .rp-snapshot-section-detail table tfoot td {
+	  background-color: #cccccc;
+	  border: 1px solid #999;
+	}
+}
+.rp-snapshot .text-right {
+  text-align: right !important;
+}
+
+
+/** Trend Table classes **/
+.amp-iterator-row-banded-odd 
+{
+	background-color: #ffffff;border-bottom: 1px solid #b6bdc6; border-right:1px solid #b6bdc6;padding-right:2px;font-size: 13px; height: 25px;color: #000000;
+}
+
+.amp-iterator-row-banded-even {
+	background-color: #f2f2f2;border-bottom: 1px solid #b6bdc6; border-right:1px solid #b6bdc6;padding-right:2px;font-size: 13px; height: 25px;color: #000000;
+}
+
+/** Ownership Snapshot **/
+body.af|document .amp-ownership-label
+{
+    font-weight: 700 !important;
+}
+.af_commandToolbarButton_image
+{
+    width: 16px;
+}
+
+@page {
+      size: auto;
+      margin:auto;
+  }
+
+.amp-panel-Box-search af|panelBox::content {
+background-color: #f2f2f2 !important;
+}
+
+.amp-edit-box af|panelBox::content {
+background-color: #f2f2f2 !important;
+}
+
+.amp-edit-box af|panelBox::table {
+background-color: #f2f2f2 !important;
+}
+
+
+af|panelBox::content {
+background-color: #ffffff !important;
+} 
+
+af|panelBox::table {
+background-color: #ffffff !important;
+}
+
+af|panelBox::center {
+background-color: #ffffff !important;
+}
+
+af|panelBox::footer-center {
+background-color: #ffffff !important;
+}
+
+.amp-label {font-weight:800;}
+/** Start 32736*/
+af|commandToolbarButton:hover {
+  height: 19px;
+  background-color: #1466b2; !important;
+}
+
+
+af|menuBar, af|menuBar::items, af|menu::bar-item:highlighted {
+    border: none;
+    min-height: 26px;
+    padding:0px;
+}
+
+/********* Alta Adjustments *********/
+
+af|selectRadioChoice::content {
+    line-height: 0px; 
+}
+
+af|showDetailFrame {
+    margin-bottom: 5px;
+}
+
+af|showDetailFrame::content {
+  background-color:none;
+}
+
+af|panelList af|goLink:active:visited
+af|panelList af|goLink:hover:visited{
+  color:rgb(255, 255, 255);
+}
+af|panelList::item {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+af|panelList::link:hover, af|panelList::link:focus{
+  color:White;
+  text-decoration:none;
+}
+
+af|panelList ul {
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+/*************
+AMP TOOLBAR
+************/
+
+
+af|toolbar {
+    padding:0px;
+}
+
+af|toolbox::leading-cell {
+    padding:0px;
+}
+
+af|button::image{
+  width:16px;
+  height:16px;
+}
+
+
+af|button.PrimaryButton{
+    background-color: #194e95;
+    background-image:none;
+    color: #FFFFFF;
+}
+
+af|button:busy{
+    border-radius: 3px;
+    background-color: #0572CE;
+    border: #0572CE solid 1px;
+    font-weight:bold;
+    color: #FFFFFF;
+    transition: background-color .12s ease-in;    
+}
+
+af|button{
+    border-radius: 3px;
+    border: 1px solid #c4ced7;
+    color: #000000;
+    text-shadow: none;
+    font-weight: bold;
+    background-color: transparent;
+    background-image: -moz-linear-gradient(bottom, #E4E8EA 0%, #E8EBED 50%, #f1f3f4 96.36%, #FFFFFF 100%);
+}
+
+af|button:hover::link{
+    border-radius: 3px;
+    background-color: #0572CE;
+    border: #0572CE solid 1px;
+    font-weight:bold;
+    color: #FFFFFF;
+    transition: background-color .12s ease-in;    
+}
+
+af|button:disabled, af|button:disabled:hover::link {
+    border-radius: 3px;
+    border: 1px solid #c4ced7;
+    color: #9e9e9e;
+    font-weight:bold;
+    background-color:#f4f6f7;
+}
+
+af|panelHeader af|panelGroupLayout af|toolbar af|commandToolbarButton,
+af|commandButton:text-only {
+    border-radius: 3px;
+    background-image: none;
+    text-shadow: none;
+    font-weight: normal;
+    color: #000000;
+    background-color: #E8EBED;
+    border: 1px solid #c4ced7;
+    min-height: 26px;
+}
+
+af|panelHeader af|toolbar af|panelGroupLayout af|commandToolbarButton:hover,
+af|panelHeader af|panelGroupLayout af|toolbar af|commandToolbarButton:hover,
+af|commandButton:text-only:hover,
+af|commandButton:text-only:disabled:busy{
+    border-radius: 3px;
+    background-image: none;
+    text-shadow: none;
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: #0572CE;
+    border: 1px solid #0572CE;
+    transition: background-color .12s ease-in;    
+    min-height: 26px;
+
+}
+
+af|panelHeader af|panelGroupLayout af|toolbar af|commandToolbarButton:disabled{
+    border: 1px solid #c4ced7;
+    color: #9e9e9e;
+    background-color:#f4f6f7;
+}
+
+
+af|panelFormLayout::content-cell af|toolbar af|commandToolbarButton:disabled,
+af|panelFormLayout::content-cell af|toolbar af|commandToolbarButton:disabled:hover{
+    border: 1px solid #c4ced7;
+    color: #9e9e9e;
+    font-weight: normal;
+}
+
+af|panelFormLayout::content-cell{
+  padding-top:0px;
+}
+
+
+
+af|toolbox::leading-cell af|toolbar af|commandToolbarButton::image, 
+af|toolbox::last-cell af|toolbar af|commandToolbarButton::image {
+  width:16px;
+}
+
+
+
+/**
+af|commandButton {
+   margin-top:2px;
+   margin-right:2px;
+}
+*/
+
+af|toolbar af|selectOneChoice::label{
+  font-size:12px;
+  font-weight:normal;
+}
+
+af|toolbar af|commandToolbarButton af|goLink {
+    padding: 0px;
+    border-width: 0px;
+}
+
+af|toolbar af|commandToolbarButton::text:hover af|goLink {
+    padding: 0px;
+    border-width: 0px;
+}
+
+af|panelCollection menuBar::item{
+   padding: 0px;
+}
+af|panelGroupLayout.AMPPsrRemarkListItem {
+  background-color:transparent !important;
+  height:200px;
+}
+
+af|panelFormLayout::label-cell.PSRGreyBackground{
+  padding-left:0px;
+  background-color:#EEEEEE;
+}
+
+/*30 June 2017 - STR Change History Form Styles*/
+
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+
+af|separator {
+    width:250px;
+}
+
+af|outputLabel.STRDisplayOPT {
+  font-weight:normal;
+}
+
+af|outputLabel.STRGroupLabel {
+ font-size:14px;
+  color:#0572CE !important;
+  font-weight:bold !important;
+}
+
+af|panelLabelAndMessage.GRPLabel::label{
+  text-align: left;
+  font-weight:bold;
+  font-size:14px;
+}
+af|panelLabelAndMessage::content-cell.GRPLabel{
+  display:none;
+}
+
+af|panelFormLayout::label-cell{
+  padding-top:0px;
+}
+
+af|panelLabelAndMessage::content-cell.AFPanelFormLayoutContentCell
+{
+  padding-top:3px;
+  padding-bottom: 3px;
+}
+
+af|panelFormLayout::separator {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+af|dialog.AMPReadOnlyDialog {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+
+
+af|dialog::content-start{
+  background-color: #FFFFFF;
+}
+
+af|dialog::content-start{
+   display:none;
+}
+
+af|dialog::content-end{
+   display:none;
+}
+af|dialog::header-start{
+   display:none;
+}
+
+af|dialog::header-end{
+   display:none;
+}
+
+af|dialog::footer-start{
+   display:none;
+}
+
+af|dialog::footer-end{
+   display:none;
+}
+/*Set Dialog title font size to 16px*/
+
+af|dialog.AMPReadOnlyDialog::title{
+ font-size:14px;
+}
+
+
+/*
+Added 10px extra padding to the dialog
+*/
+
+af|dialog.AMPReadOnlyDialog af|panelHeader af|panelLabelAndMessage af|outputLabel{
+   font-weight:normal;
+   color:#000000;
+   text-align: left;
+   font-size:11px;
+}
+
+af|dialog.AMPReadOnlyDialog af|panelHeader::title-text0{
+  font-size:12px;
+  color:#0572CE;
+  font-weight:bold;
+}
+
+af|dialog.AMPReadOnlyDialog af|panelHeader::title0{
+  padding:0px;
+  background-color:#D5D5D5
+}
+
+
+af|dialog.AMPReadOnlyDialog af|button {
+    text-shadow: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    border-radius:3px;
+}
+
+af|dialog.AMPReadOnlyDialog af|button::link {
+    text-shadow: none;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+af|dialog.AMPReadOnlyDialog af|button:hover {
+    background-color: #0572CE;
+    border: #0572CE solid 1px;
+    color: #FFFFFF;
+    background-image: none;
+    border-radius: 3px;
+    text-shadow:none;
+    font-weight:normal;    
+    font-size: 13px;
+    transition: background-color .12s ease-in;    
+}
+
+
+af|dialog.AMPReadOnlyDialog af|panelGroupLayout {
+  background-color: transparent;
+}
+
+af|dialog.AMPReadOnlyDialog::footer-content{
+  padding-top:10px;
+}
+
+af|dialog.AMPReadOnlyDialog af|panelAccordion::header {
+  /*NK 8/18: changed from display: none to dispaly: block : Augustin plz take a look*/
+  display:block; 
+}
+
+af|dialog.AMPReadOnlyDialog af|panelAccordion {
+  border-top: 1px solid #D5D5D5;
+}
+
+af|panelAccordion::header {
+ /*NK 8/18: changed from display: none to dispaly: block : Augustin plz take a look*/
+  display:block; 
+}
+
+/*End STR Change History*/
+/*Sapna*/
+
+af|panelLabelAndMessage::label-text{
+font-size: 13px;
+}
+
+af|panelCollection af|toolbox::row {
+    border-top: 1px solid #D5D5D5;
+    border-left: 1px solid #D5D5D5;
+    border-right: 1px solid #D5D5D5;
+}
+
+af|dialog.AMPReadOnlyDialog af|button:hover::link {
+    border: none;
+    background-color: transparent;   
+}
+
+af|panelHeader::title0 {
+  padding: 0px;
+}
+
+af|dialog::footer-button,
+af|inputFile af|commandButton {
+    border-radius: 3px;
+    background-image: none;
+    text-shadow: none;
+    font-weight: bold;
+    color: #000000;
+    background-color: #E8EBED;
+    border: 1px solid #c4ced7;
+    min-height: 26px;
+}
+
+af|dialog::footer-button:hover,
+af|inputFile af|commandButton:hover {
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #0572CE;
+    border: 1px solid #0572CE;
+    transition: background-color .12s ease-in;    
+}
+
+
+af|dialog::footer-button,
+af|panelGroupLayout af|toolbar af|commandToolbarButton,
+af|panelBox af|toolbar af|panelGroupLayout af|commandToolbarButton,
+af|panelFormLayout::content-cell af|toolbar af|commandToolbarButton,
+af|panelWindow af|panelCollection af|toolbar af|commandToolbarButton,
+af|showDetailItem af|panelCollection af|toolbar af|commandToolbarButton,
+af|showDetailHeader af|panelCollection af|toolbar af|commandToolbarButton {
+    border-radius: 3px;
+    background-image: none;
+    text-shadow: none;
+    font-weight: normal;
+    color: #000000;
+    background-color: #E8EBED;
+    border: 1px solid #c4ced7;
+    min-height: 26px;
+}
+
+
+
+af|showDetailHeader af|panelCollection af|toolbar af|commandToolbarButton:disabled,
+af|showDetailHeader af|panelCollection af|toolbar af|commandToolbarButton:disabled:hover{
+    border: 1px solid #c4ced7;
+    color: #9e9e9e;
+    background-color:#f4f6f7;
+}
+
+
+af|dialog::footer-button:hover,
+af|panelGroupLayout af|toolbar af|commandToolbarButton:hover,
+af|panelBox af|toolbar af|panelGroupLayout af|commandToolbarButton:hover,
+af|panelFormLayout::content-cell af|toolbar af|commandToolbarButton:hover,
+af|panelWindow af|panelCollection af|toolbar af|commandToolbarButton:hover,
+af|showDetailItem af|panelCollection af|toolbar af|commandToolbarButton:hover,
+af|showDetailHeader af|panelCollection af|toolbar af|commandToolbarButton:hover{
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: #0572CE;
+    border: 1px solid #0572CE;
+    transition: background-color .12s ease-in;    
+}
+
+
+
+af|panelWindow af|panelCollection af|toolbar af|commandToolbarButton:selected:depressed{
+    background-color: #E8EBED;
+    border: 1px solid #c4ced7;
+}
+
+
+af|panelWindow af|panelCollection af|toolbar af|commandToolbarButton:selected:depressed:hover{
+    background-color: #0572CE;
+    border: 1px solid #0572CE;
+    transition: background-color .12s ease-in;    
+}
+
+af|panelLabelAndMessage.AMPLabelMessageText::label {
+    font-size:14px; 
+    color:#0572CE ; 
+    font-weight: bold;
+}
+
+/*Main Menu Message Board Quick View*/
+.overlay { 
+    position: fixed;
+    height: 86%;
+    width: 0;
+    z-index: 100;
+    top: 14%;
+    right: 0;
+    background-color: rgb(255,255,255);
+    background-color: rgba(255,255,255, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    top: 15%;
+    width: 100%;
+    font-size: 20px;
+}
+
+.overlay .closebtn {
+    float:right;
+}
+
+.overlay .overlayHeader {
+    width: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+@media screen and (max-height: 450px) {
+  .overlay .closebtn {
+    float: right;
+  }
+}
+
+.quickView {
+  padding-right: 5px;
+  padding-top: 5px;
+  display:inline-block;
+}
+
+.quickView img {
+  width:25px;
+  padding-top:25px;
+  padding-right:5px;
+  padding-left:5px;
+}
+
+.padding-45 {
+  padding-left:45px
+}
+
+.amp-bold {
+  font-weight:bold;
+}
+
+af|table.AMPLightWeightTable  {
+  height:auto;
+}
+
+af|table.AMPLightWeightTable af|column::banded-data-cell {
+    font-size: 13px;
+    padding-top:8px;
+    padding-bottom:8px;
+}
+
+af|table.AMPLightWeightTable af|column::column-header-cell, 
+af|table.AMPLightWeightTable af|column::column-header-cell:focus {
+    background-color:transparent;  
+    color: #000000;
+    border-bottom: 2px solid #000000; 
+    border-top: 0px solid #D6DFE6;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+af|table.AMPLightWeightTable af|table::data-table-VH-lines af|column::data-cell {
+    border-right: 0px solid #B6BDC6;
+    border-bottom: 0px solid #B6BDC6;
+
+}
+
+af|table.AMPLightWeightTable af|table::data-table-VH-lines af|column::banded-data-cell {
+    border-right: 0px solid #B6BDC6;
+    border-bottom: 0px solid #B6BDC6;
+}
+
+af|table.AMPLightWeightTable{
+  border:1px solid #D6DFE6; 
+}
+
+af|table.AMPLightWeightTable::empty-text{
+   background-color:transparent;
+}
+
+af|panelAccordion.AMPPsrDetailAccordion::body-content
+{
+   margin:8px;
+}
+
+
+af|panelAccordion.AMPPsrDetailAccordion::header{
+   border-top:1px solid #EEEEEE;
+   background-color:#F2F4F7;
+   background-image:none;
+   margin:8px;
+   border:none;
+   padding-right:8px;
+}
+
+
+af|panelAccordion.AMPPsrDetailAccordion::header-subsequent{
+   background-color:#F2F4F7;
+   background-image:none;
+   margin:8px;
+   border:none;
+}
+
+
+
+
+af|panelAccordion.AMPPsrDetailAccordion::header-title{
+   background-color:#F2F4F7;
+   border-top:1px solid #EEEEEE;
+}
+
+af|panelAccordion.AMPPsrDetailAccordion::header-toolbar{
+   background-color:#F2F4F7;
+   border-top:1px solid #EEEEEE;
+}
+
+af|panelAccordion.AMPPsrDetailAccordion{
+  border: 1px solid #EEEEEE;
+
+}
+
+
+.primary {
+    font-size:10px;
+    color:#000000;
+    background:#C3C3C3;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px ;
+    padding:5px;
+}
+
+af|listView.AMPPsrListView {
+  border-bottom: 1px solid #EEEEEE;
+}
+
+af|listItem.AMPPsrListItem {
+  padding:3px 3px 3px 3px;
+}
+
+.AMPCycAssesHighlightedRow{
+  background-color: #aad8ef;
+}
+
+.padding-right-5 {
+  padding-right:5px;
+}
+
+.padding-left-5 {
+  padding-left:5px;
+}
+
+.padding-top-5 {
+  padding-top:5px;
+}
+
+.padding-bottom-5 {
+  padding-bottom:5px;
+}
+
+
+.margin-top-15{
+  margin-top:15px;
+}
+
+.margin-top-10{
+  margin-top:10px;
+}
+
+.margin-top-5{
+  margin-top:5px;
+}
+
+.amp-border {
+  border: 1px solid #D6DFE6;
+}
+
+
+.amp-border-top{
+  border-top: 1px solid #D6DFE6;
+}
+
+.amp-border-bottom{
+  border-bottom: 1px solid #D6DFE6;
+}
+
+af|panelStretchLayout.train-toolbar-psl {
+  width:auto;
+  height:27px;
+}
+
+af|panelStretchLayout {
+  width:auto;
+  height:27px;
+}
+
+
+
+/* 
+af|train{
+  padding-left:8px;
+  border: 1px solid #D6DFE6;
+}
+
+
+
+af|train::stop-link{
+  font-size:14px;
+}
+*/
+
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabActive {
+    display: block;
+}
+
+.tabInactive {
+    display: none;
+}
+
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+af|selectManyChoice::dropdown, 
+af|selectManyChoice::dropdown:hover {
+    background-image: none;
+    background-color: #f7f8f9;
+    border-color: 1px solid #DFE4E7;
+}
+
+.no-height{
+  height:0px;
+}
+
+af|selectOneChoice af|selectOneChoice::content.amp-input-width-150,
+af|inputDate::content.amp-input-width-150,
+af|inputText::content.amp-input-width-150 {
+	width:150px;
+}
+
+af|selectManyChoice::content.amp-input-width-535{
+	width:535px;
+}
+
+af|panelGroupLayout.amp-psr-pgl{
+	background-color: transparent;
+}
+.AMPBPMPanelBox .af_panelBox_table.p_AFCore.p_AFDefault {
+    background-image: none;
+    background-color: #F2F2F2;
+    border: none;
+    padding: 10px;
+}
+
+af|panelBox.AMPBPMPanelBox::center {
+    display: none;
+}
+
+af|inputText.AMPBPMApproveLabel::label, af|selectManyCheckbox.AMPBPMApproveLabel::label {
+    display: none;
+}
+
+af|panelBox.AMPBPMApprovePanelBox::header-element {
+    background-color: #F2F2F2;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+af|panelBox.AMPBPMPanelBox {
+    margin: 10px;
+    background-color: #EEEEEE;
+    border: 1px solid #F2F2F2;
+    border-radius: 5px;
+}
+
+
+.AMPBPMListViewStyle af|panelLabelAndMessage::label {
+    text-align: left;
+}
+
+.AMPBPMListViewStyle af|listView {
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid #F2F2F2;
+}
+
+af|panelWindow::close-icon-style {
+background-image:none !important;
+display:none !important;
+}
+
+
+af|panelWindow::close-icon-style:hover {
+background-image:none !important;
+display:none !important;
+}
+
+af|panelWindow::close-icon-style:active {
+background-image:none !important;
+display:none !important;
+}
+
+af|panelWindow::close-icon-style:focus {
+background-image:none !important;
+display:none !important;
+}
+
+.AFContentCell {
+    padding-top: 2px;
+}
+
+

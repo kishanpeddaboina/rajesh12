@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="editAggreg-btf">
+    <default-activity>editAggregate</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>aggregateId</name>
+      <value>#{pageFlowScope.aggregateId}</value>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name>ain</name>
+      <value>#{pageFlowScope.ain}</value>
+    </input-parameter-definition>
+    <view id="editAggregate">
+      <page>/mac-assignedpt-ownershipreviewer/editAggregate.jspx</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__3">
+      <from-activity-id>editAggregate</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>close</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

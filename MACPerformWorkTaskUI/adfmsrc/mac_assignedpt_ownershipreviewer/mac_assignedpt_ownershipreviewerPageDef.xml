@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="mac_assignedpt_ownershipreviewerPageDef" Package="mac_assignedpt_ownershipreviewer">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="MacDC" id="MacDCIterator"/>
+    <accessorIterator MasterBinding="MacDCIterator" Binds="mailingAddrPojoList" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.MailingAddrPayloadDO" id="mailingAddrPojoListIterator"/>
+    <accessorIterator MasterBinding="mailingAddrPojoListIterator" Binds="ainList" RangeSize="-1" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.AINRecordPojo" id="ainListIterator"/>
+    <accessorIterator MasterBinding="ainListIterator" Binds="currentSitusAddr" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.AddrPojo" id="currentSitusAddrIterator"/>
+    <accessorIterator MasterBinding="ainListIterator" Binds="currentMailingAddr" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.AddrPojo" id="currentMailingAddrIterator"/>
+    <accessorIterator MasterBinding="MacDCIterator" Binds="assessePojoList" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.AssessePojo" id="assessePojoListIterator"/>
+    <searchRegion Binds="assessePojoListIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="assessePojoListQuery"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="MACPerformWorkTaskUI_PerformWorkTask" RangeSize="25"
+                    BeanClass="MACPerformWorkTaskUI_PerformWorkTask.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.task" id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PerformWorkTaskPayloadType" id="payloadIterator"/>
+    <accessorIterator id="AMPWorkTaskIterator" MasterBinding="payloadIterator" Binds="AMPWorkTask" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AMPWorkTask"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="AINList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AINList" id="AINListIterator"/>
+    <accessorIterator MasterBinding="AINListIterator" Binds="AIN" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.AIN" id="AINIterator"/>
+    <accessorIterator MasterBinding="MacDCIterator" Binds="addrValidnForm" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.common.model.triliumaddressvalidation.data.AddressPojo"
+                      id="addrValidnFormIterator"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="PropertyIdentificationList" RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationList" id="PropertyIdentificationListIterator"/>
+    <accessorIterator MasterBinding="PropertyIdentificationListIterator" Binds="PropertyIdentification" RangeSize="25" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType" id="PropertyIdentificationIterator"/>
+    <!--<accessorIterator id="ainRecordPojoListIterator" MasterBinding="MacDCIterator" Binds="ainRecordPojoList"
+                      RangeSize="25" DataControl="MacDC" BeanClass="gov.laca.amp.modules.mac.pojo.AINRecordPojo"/>-->
+    <accessorIterator id="ainRecordPojoListIterator" MasterBinding="MacDCIterator" Binds="ainRecordPojoList"
+                      RangeSize="25" DataControl="MacDC" BeanClass="gov.laca.amp.modules.mac.pojo.AINRecordPojo"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="ParameterList" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.ParameterList" id="ParameterListIterator"/>
+    <accessorIterator id="ParameterIterator" MasterBinding="ParameterListIterator" Binds="Parameter" RangeSize="25"
+                      DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                      BeanClass="MACPerformWorkTaskUI_PerformWorkTask.Parameter"/>
+    <accessorIterator MasterBinding="mailingAddrPojoListIterator" Binds="mailingAddr" RangeSize="25" DataControl="MacDC"
+                      BeanClass="gov.laca.amp.modules.mac.pojo.AddrPojo" id="mailingAddrIterator"/>
+    <accessorIterator id="orgAinListIterator" MasterBinding="mailingAddrPojoListIterator" Binds="orgAinList"
+                      RangeSize="-1" DataControl="MacDC" BeanClass="gov.laca.amp.modules.mac.pojo.AINRecordPojo"/>
+    <taskFlow id="ampsupportingdocsbtf1" taskFlowId="/WEB-INF/btf/amp-supporting-docs-btf.xml#amp-supporting-docs-btf"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="wuId" value="#{bindings.WorkUnitId.inputValue}"/>
+        <parameter id="readOnlyMode" value="false"/>
+        <parameter id="docLinksEnabled" value="true"/>
+        <parameter id="ain" value="#{pageFlowScope.wuPriAIN}"/>
+        <parameter id="propertyType" value="RP"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ainListIterator" id="ain">
+      <AttrNames>
+        <Item Value="ain"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="aoid">
+      <AttrNames>
+        <Item Value="aoid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="parcelStatus">
+      <AttrNames>
+        <Item Value="parcelStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="communityName">
+      <AttrNames>
+        <Item Value="communityName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="assesseeName">
+      <AttrNames>
+        <Item Value="assesseeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="recordingDate">
+      <AttrNames>
+        <Item Value="recordingDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="seqNumber">
+      <AttrNames>
+        <Item Value="seqNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="docId">
+      <AttrNames>
+        <Item Value="docId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="district">
+      <AttrNames>
+        <Item Value="district"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="region">
+      <AttrNames>
+        <Item Value="region"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="cluster">
+      <AttrNames>
+        <Item Value="cluster"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="isApproveAddrChange">
+      <AttrNames>
+        <Item Value="isApproveAddrChange"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="isDenyAddrChange">
+      <AttrNames>
+        <Item Value="isDenyAddrChange"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="isMailingAddrInvestigationReq">
+      <AttrNames>
+        <Item Value="isMailingAddrInvestigationReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="remarks">
+      <AttrNames>
+        <Item Value="remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="isSitusAddrInvestigationReq">
+      <AttrNames>
+        <Item Value="isSitusAddrInvestigationReq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="situsAddrInvestigationNotes">
+      <AttrNames>
+        <Item Value="situsAddrInvestigationNotes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="isVisited">
+      <AttrNames>
+        <Item Value="isVisited"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="street">
+      <AttrNames>
+        <Item Value="street"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="city">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="state">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="zip">
+      <AttrNames>
+        <Item Value="zip"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="country">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentSitusAddrIterator" id="pojoRowId">
+      <AttrNames>
+        <Item Value="pojoRowId"/>
+      </AttrNames>
+    </attributeValues>
+    <!--<attributeValues IterBinding="currentMailingAddrIterator" id="city1">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentMailingAddrIterator" id="state1">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentMailingAddrIterator" id="zip1">
+      <AttrNames>
+        <Item Value="zip"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentMailingAddrIterator" id="country1">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="currentMailingAddrIterator" id="pojoRowId1">
+      <AttrNames>
+        <Item Value="pojoRowId"/>
+      </AttrNames>
+    </attributeValues>-->
+    <action IterBinding="ainListIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="ainListIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="ainListIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="inCareOf">
+      <AttrNames>
+        <Item Value="inCareOf"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="ainListIterator" id="isSitusAddrInvestigationReq1" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="isSitusAddrInvestigationReq"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="assessePojoListIterator" id="assessePojoList">
+      <nodeDefinition DefName="gov.laca.amp.modules.mac.pojo.AssessePojo" Name="assessePojoList0">
+        <AttrNames>
+          <Item Value="assesseeName"/>
+          <Item Value="recordingDate"/>
+          <Item Value="docId"/>
+          <Item Value="seqNumber"/>
+          <Item Value="city"/>
+          <Item Value="state"/>
+          <Item Value="zipcode"/>
+          <Item Value="country"/>
+          <Item Value="street"/>
+          <Item Value="updatedDate"/>
+          <Item Value="inCareOf"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ainListIterator" id="Next"
+            InstanceName="gov.laca.amp.modules.mac.pojo.MailingAddrPayloadDO.ainList" DataControl="MacDC"
+            RequiresUpdateModel="true" Action="next"/>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                  InstanceName="bindings.getTaskDetails.dataControl"
+                  ReturnName="data.MACPerformWorkTaskUI_PerformWorkTask.methodResults.getTaskDetails_getTaskDetails_dataControl_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="EventType">
+      <AttrNames>
+        <Item Value="EventType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="BusinessEventType">
+      <AttrNames>
+        <Item Value="BusinessEventType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="EventSource">
+      <AttrNames>
+        <Item Value="EventSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="Category">
+      <AttrNames>
+        <Item Value="Category"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="Subcategory">
+      <AttrNames>
+        <Item Value="Subcategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="DocumentId">
+      <AttrNames>
+        <Item Value="DocumentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="AggregatedId">
+      <AttrNames>
+        <Item Value="AggregatedId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="District">
+      <AttrNames>
+        <Item Value="District"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="Region">
+      <AttrNames>
+        <Item Value="Region"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="Cluster">
+      <AttrNames>
+        <Item Value="Cluster"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="PackageId">
+      <AttrNames>
+        <Item Value="PackageId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="PSRId">
+      <AttrNames>
+        <Item Value="PSRId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="EventDate">
+      <AttrNames>
+        <Item Value="EventDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="PSRNumber">
+      <AttrNames>
+        <Item Value="PSRNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="WorkUnitId">
+      <AttrNames>
+        <Item Value="WorkUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="WorkUnitName">
+      <AttrNames>
+        <Item Value="WorkUnitName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="IsReview">
+      <AttrNames>
+        <Item Value="IsReview"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="InstanceId">
+      <AttrNames>
+        <Item Value="InstanceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="TransactionId">
+      <AttrNames>
+        <Item Value="TransactionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="MasterWorkUnitId">
+      <AttrNames>
+        <Item Value="MasterWorkUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="ReviewWorkUnitId">
+      <AttrNames>
+        <Item Value="ReviewWorkUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AMPWorkTaskIterator" id="DCAId">
+      <AttrNames>
+        <Item Value="DCAId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="workUnitId">
+      <AttrNames>
+        <Item Value="workUnitId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="workUnitName">
+      <AttrNames>
+        <Item Value="workUnitName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="aggregateId">
+      <AttrNames>
+        <Item Value="aggregateId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="mailingAddress">
+      <AttrNames>
+        <Item Value="mailingAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="isSetasSitusAddr">
+      <AttrNames>
+        <Item Value="isSetasSitusAddr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="isAuthorizedAgent">
+      <AttrNames>
+        <Item Value="isAuthorizedAgent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="agentName">
+      <AttrNames>
+        <Item Value="agentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="propertyOwnerName">
+      <AttrNames>
+        <Item Value="propertyOwnerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="phone">
+      <AttrNames>
+        <Item Value="phone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="signature">
+      <AttrNames>
+        <Item Value="signature"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="date">
+      <AttrNames>
+        <Item Value="date"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="category">
+      <AttrNames>
+        <Item Value="category"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="subCategory">
+      <AttrNames>
+        <Item Value="subCategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="eventDate">
+      <AttrNames>
+        <Item Value="eventDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="eventSource">
+      <AttrNames>
+        <Item Value="eventSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="uiAction">
+      <AttrNames>
+        <Item Value="uiAction"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="district1">
+      <AttrNames>
+        <Item Value="district"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="region1">
+      <AttrNames>
+        <Item Value="region"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="cluster1">
+      <AttrNames>
+        <Item Value="cluster"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="documentId">
+      <AttrNames>
+        <Item Value="documentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="DCAID">
+      <AttrNames>
+        <Item Value="DCAID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="inputSource">
+      <AttrNames>
+        <Item Value="inputSource"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="transactionId">
+      <AttrNames>
+        <Item Value="transactionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="payloadType">
+      <AttrNames>
+        <Item Value="payloadType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrPojoListIterator" id="pojoRowId2">
+      <AttrNames>
+        <Item Value="pojoRowId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AINIterator" id="AIN_text">
+      <AttrNames>
+        <Item Value="AIN_text"/>
+      </AttrNames>
+    </attributeValues>
+      <attributeValues IterBinding="addrValidnFormIterator" id="matchLevel">
+      <AttrNames>
+        <Item Value="matchLevel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="suggestedAddr">
+      <AttrNames>
+        <Item Value="suggestedAddr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="matchLevelDesc">
+      <AttrNames>
+        <Item Value="matchLevelDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="streetAddress">
+      <AttrNames>
+        <Item Value="streetAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="city2">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="state2">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="zipCode">
+      <AttrNames>
+        <Item Value="zipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="addrValidnFormIterator" id="country2">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="taskIterator" id="SubmitForApproval" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="SubmitForApproval" IsViewObjectMethod="false"
+                  DataControl="MACPerformWorkTaskUI_PerformWorkTask"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+   
+    <tree IterBinding="PropertyIdentificationIterator" id="PropertyIdentification">
+      <nodeDefinition DefName="MACPerformWorkTaskUI_PerformWorkTask.PropertyIdentificationType" Name="PropertyIdentification0">
+        <AttrNames>
+          <Item Value="AIN"/>
+          <Item Value="AOID"/>
+          <Item Value="PropertyType"/>
+          <Item Value="IsPrimary"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ParameterIterator" id="CreateInsert"
+            InstanceName="MACPerformWorkTaskUI_PerformWorkTask.ParameterList.Parameter"
+            DataControl="MACPerformWorkTaskUI_PerformWorkTask" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ainListIterator" id="Next1" RequiresUpdateModel="true" Action="next"/>
+    <methodAction id="loadMacData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadMacData"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.loadMacData.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.loadMacData_loadMacData_dataControl_dataProvider_loadMacData_result">
+      <NamedData NDName="workUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="ains" NDType="java.util.List"/>
+      <NamedData NDName="rolevalue" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getAddrPayloadData" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getAddrPayloadData" IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.getAddrPayloadData.dataControl.dataProvider">
+      <NamedData NDName="workUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="ains" NDType="java.util.List"/>
+      <NamedData NDName="rolevalue" NDType="java.lang.String"/>
+      <NamedData NDName="showallain" NDType="boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="ainListIterator" id="originalMailAddress">
+      <AttrNames>
+        <Item Value="originalMailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="currentMailingAddress">
+      <AttrNames>
+        <Item Value="currentMailingAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="fetchAssesseeList" RequiresUpdateModel="true" Action="invokeMethod" MethodName="fetchAssesseeList"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.fetchAssesseeList.dataControl.dataProvider">
+      <NamedData NDName="ain" NDType="java.lang.String"/>
+      <NamedData NDName="aoid" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="mailingAddrIterator" id="city1">
+      <AttrNames>
+        <Item Value="city"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrIterator" id="country1">
+      <AttrNames>
+        <Item Value="country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrIterator" id="state1">
+      <AttrNames>
+        <Item Value="state"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrIterator" id="zip1">
+      <AttrNames>
+        <Item Value="zip"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="mailingAddrIterator" id="street1">
+      <AttrNames>
+        <Item Value="street"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MacDCIterator" id="ainSize">
+      <AttrNames>
+        <Item Value="ainSize"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveAddressWorkUnitFacade" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="saveAddressWorkUnitFacade" IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.saveAddressWorkUnitFacade.dataControl.dataProvider">
+      <NamedData NDName="addrValChanged" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <methodAction id="filterAin" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterAin"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.filterAin.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.filterAin_filterAin_dataControl_dataProvider_filterAin_result">
+      <NamedData NDName="filterType" NDType="java.lang.String"/>
+      <NamedData NDName="role" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="ainListIterator" id="isOwnedByInvestigators">
+      <AttrNames>
+        <Item Value="isOwnedByInvestigators"/>
+      </AttrNames>
+    </attributeValues>
+	<attributeValues IterBinding="PropertyIdentificationIterator" id="AIN">
+      <AttrNames>
+        <Item Value="AIN"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="flagMailSitus">
+      <AttrNames>
+        <Item Value="flagMailSitus"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="updatePayload" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updatePayload"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.updatePayload.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.updatePayload_updatePayload_dataControl_dataProvider_updatePayload_result">
+      <NamedData NDName="aggrAinList" NDType="java.util.List"/>
+      <NamedData NDName="role" NDType="java.lang.String"/>
+      <NamedData NDName="showAll" NDType="java.lang.Boolean"/>
+    </methodAction>
+    <attributeValues IterBinding="ainListIterator" id="ainDisplay">
+      <AttrNames>
+        <Item Value="ainDisplay"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ainListIterator" id="inCareOf1">
+      <AttrNames>
+        <Item Value="inCareOf"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

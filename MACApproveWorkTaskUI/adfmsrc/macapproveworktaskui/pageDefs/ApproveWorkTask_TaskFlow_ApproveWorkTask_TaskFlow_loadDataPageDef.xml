@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="ApproveWorkTask_TaskFlow_ApproveWorkTask_TaskFlow_loadDataPageDef"
+                Package="macapproveworktaskui.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="MACApproveWorkTaskUI_ApproveWorkTask" RangeSize="25"
+                    BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.task" id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.ApproveWorkTaskPayloadType" id="payloadIterator"/>
+    <accessorIterator id="AMPWorkTaskIterator" MasterBinding="payloadIterator" Binds="AMPWorkTask" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.AMPWorkTask"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="PropertyIdentificationList" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.PropertyIdentificationList"
+                      id="PropertyIdentificationListIterator"/>
+    <accessorIterator id="PropertyIdentificationIterator" MasterBinding="PropertyIdentificationListIterator"
+                      Binds="PropertyIdentification" RangeSize="25" DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.PropertyIdentificationType"/>
+    <accessorIterator MasterBinding="AMPWorkTaskIterator" Binds="ParameterList" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.ParameterList" id="ParameterListIterator"/>
+    <accessorIterator id="ParameterIterator" MasterBinding="ParameterListIterator" Binds="Parameter" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.Parameter"/>
+    <accessorIterator id="customAttributesIterator" MasterBinding="taskIterator" Binds="customAttributes" RangeSize="25"
+                      DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                      BeanClass="MACApproveWorkTaskUI_ApproveWorkTask.customAttributesType"/>
+  </executables>
+  <bindings>
+    <methodAction id="loadMacData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadMacData"
+                  IsViewObjectMethod="false" DataControl="MacDC"
+                  InstanceName="bindings.loadMacData.dataControl.dataProvider"
+                  ReturnName="data.MacDC.methodResults.loadMacData_loadMacData_dataControl_dataProvider_loadMacData_result">
+      <NamedData NDName="workUnitId" NDType="java.lang.String"/>
+      <NamedData NDName="ains" NDType="java.util.List"/>
+      <NamedData NDName="rolevalue" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="MACApproveWorkTaskUI_ApproveWorkTask"
+                  InstanceName="bindings.getTaskDetails.dataControl"
+                  ReturnName="data.MACApproveWorkTaskUI_ApproveWorkTask.methodResults.getTaskDetails_getTaskDetails_dataControl_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PropertyIdentificationIterator" id="AIN">
+      <AttrNames>
+        <Item Value="AIN"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyIdentificationIterator" id="AOID">
+      <AttrNames>
+        <Item Value="AOID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyIdentificationIterator" id="PropertyType">
+      <AttrNames>
+        <Item Value="PropertyType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PropertyIdentificationIterator" id="IsPrimary">
+      <AttrNames>
+        <Item Value="IsPrimary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="customAttributesIterator" id="customAttributeString2">
+      <AttrNames>
+        <Item Value="customAttributeString2"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
